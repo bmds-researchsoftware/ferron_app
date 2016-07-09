@@ -6,13 +6,9 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'build/pages/configuration/configuration.html',
 })
 export class ConfigurationPage {
-
-  constructor(private nav: NavController) {
-
-  }
+  constructor(private nav: NavController) {}
 
   public goHome() {
     this.nav.push(HomePage);
   }
-
 }
