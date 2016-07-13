@@ -14,12 +14,12 @@
 
   <ion-card>
     <ion-list>
-      <button ion-item>
+      <button ion-item (click)="goLearn()">
         Learn to cope<br>
         with urges to smoke
       </button>
-      <button ion-item>List of coping skills</button>
-      <button ion-item>Set your reminders</button>
+      <button ion-item (click)="goCopingSkills()">List of coping skills</button>
+      <button ion-item (click)="goReminders()">Set your reminders</button>
     </ion-list>
   </ion-card>
 
