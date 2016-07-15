@@ -1,3 +1,4 @@
+import { AboutPage } from '../../pages/about/about';
 import { CopingSkillsPage } from '../../pages/coping-skills/coping-skills';
 import { LearnPage } from '../../pages/learn/learn';
 import { RemindersPage } from '../../pages/reminders/reminders';
@@ -11,6 +12,14 @@ describe('HomePage', () => {
   beforeEachProviders(() => [
     HomePage, { provide: NavController, useValue: stubNavController }
   ]);
+
+  describe('#goAbout', () => {
+    it('navigates to the AboutPage', inject([HomePage], (homePage) => {
+      homePage.goAbout();
+
+      expect(stubNavController.push).toHaveBeenCalledWith(AboutPage);
+    }));
+  });
 
   describe('#goCopingSkills', () => {
     it('navigates to the CopingSkillsPage', inject([HomePage], (homePage) => {

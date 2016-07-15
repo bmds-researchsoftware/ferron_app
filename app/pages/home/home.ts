@@ -1,3 +1,4 @@
+import { AboutPage } from '../../pages/about/about';
 import { CopingSkillsPage } from '../../pages/coping-skills/coping-skills';
 import { LearnPage } from '../../pages/learn/learn';
 import { RemindersPage } from '../../pages/reminders/reminders';
@@ -9,6 +10,10 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
   constructor(private nav: NavController) {
+  }
+
+  public goAbout() {
+    this.nav.push(AboutPage);
   }
 
   public goCopingSkills() {
