@@ -37,6 +37,7 @@
     "karma-phantomjs-launcher": "^1.0.1",
     "karma-remap-istanbul": "^0.1.1",
     "karma-safari-launcher": "^1.0.0",
+    "protractor": "^4.0.0",
     "run-sequence": "1.2.2",
     "tsify": "1.0.1",
     "tslint": "^3.13.0",
