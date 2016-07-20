@@ -1,14 +1,10 @@
-// learn_to_cope.page.js
+var Finders = require('../helpers/finders.helper.js');
 
 var LearnPage = function() {};
 
 LearnPage.prototype = Object.create({}, {
   pageTitlePresent: {
-    get: function() {
-      return browser.isElementPresent(
-        by.cssContainingText('.toolbar-title', 'Learn to cope')
-      )
-    }
+    get: function() { return Finders.findTitle('Learn to cope'); }
   }
 });
 

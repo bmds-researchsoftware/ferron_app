@@ -1,14 +1,10 @@
-// coping_skills_index.page.js
+var Finders = require('../helpers/finders.helper.js');
 
 var CopingSkillsIndex = function() {};
 
 CopingSkillsIndex.prototype = Object.create({}, {
   pageTitlePresent: {
-    get: function() {
-      return browser.isElementPresent(
-        by.cssContainingText('.toolbar-title', 'CopingSkills')
-      )
-    }
+    get: function() { return Finders.findTitle('CopingSkills'); }
   }
 });
 

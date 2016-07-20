@@ -1,7 +1,6 @@
-// configuration_spec.js
-
 var ConfigurationPage = require('../pages/configuration.page.js');
 var HomePage = require('../pages/home.page.js');
+var Expectations = require('../helpers/expectations.helper.js');
 
 describe('The Configuration page', function() {
   var configurationPage;
@@ -18,8 +17,6 @@ describe('The Configuration page', function() {
   it('accepts valid configuration token', function() {
     configurationPage.configureParticipant('fake participant');
 
-    expect(
-      browser.wait(function() { return homePage.pageTitlePresent })
-    ).toBe(true)
+    Expectations.waitAndExpectToBeTrue(function() { return homePage.pageTitlePresent });
   });
 });

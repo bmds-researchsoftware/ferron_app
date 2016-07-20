@@ -1,10 +1,9 @@
-// home_spec.js
-
 var ConfigurationPage = require('../pages/configuration.page.js')
 var CopingSkillsIndex = require('../pages/coping_skill_index.page.js')
 var HomePage = require('../pages/home.page.js')
 var LearnPage = require('../pages/learn_to_cope.page.js')
 var RemindersPage = require('../pages/reminders.page.js')
+var Expectations = require('../helpers/expectations.helper.js')
 
 describe('Home page', function() {
   var configurationPage;
@@ -12,6 +11,7 @@ describe('Home page', function() {
   var homePage = new HomePage();
   var learnPage = new LearnPage();
   var remindersPage = new RemindersPage();
+  var waitAndExpectToBeTrue = Expectations.waitAndExpectToBeTrue
 
   beforeEach(function() {
     // need a way to set the state
@@ -22,9 +22,7 @@ describe('Home page', function() {
 
     // this is useless in this capacity
     // would like to get this to work so I do not need a sleep
-    expect(
-      browser.wait(function() { return homePage.pageTitlePresent })
-    ).toBe(true)
+    waitAndExpectToBeTrue(function() { return homePage.pageTitlePresent });
 
     browser.sleep(1000)
   });
@@ -32,56 +30,42 @@ describe('Home page', function() {
   it('links to Start Here at first visit', function() {
     // homePage.startHereButton.click();
 
-    // expect(
-    //   browser.wait(function() { return page.pageTitlePresent })
-    // ).toBe(true)
+    // waitAndExpectToBeTrue(function() { return page.pageTitlePresent });
   });
 
   it('links to Check-in after first visit', function() {
     // homePage.checkInButton.click();
 
-    // expect(
-    //   browser.wait(function() { return page.pageTitlePresent })
-    // ).toBe(true)
+    // waitAndExpectToBeTrue(function() { return page.pageTitlePresent });
   });
 
   it('links to Learn How To Cope page', function() {
     homePage.learnToCopeButton.click();
 
-    expect(
-      browser.wait(function() { return learnPage.pageTitlePresent })
-    ).toBe(true)
+    waitAndExpectToBeTrue(function() { return learnPage.pageTitlePresent })
   });
 
   it('links to Coping Skills Index', function() {
     homePage.copingSkillsButton.click();
 
-    expect(
-      browser.wait(function() { return copingSkillsIndex.pageTitlePresent })
-    ).toBe(true)
+    waitAndExpectToBeTrue(function() { return copingSkillsIndex.pageTitlePresent });
   });
 
   it('links to Set Your Reminders at first visit', function() {
     homePage.setYourRemindersButton.click();
 
-    expect(
-      browser.wait(function() { return remindersPage.pageTitlePresent })
-    ).toBe(true)
+    waitAndExpectToBeTrue(function() { return remindersPage.pageTitlePresent });
   });
 
   it('links to Your Reminders after first visit', function() {
     // homePage.yourRemindersButton.click();
 
-    // expect(
-    //   browser.wait(function() { return remindersPage.pageTitlePresent })
-    // ).toBe(true)
+    // waitAndExpectToBeTrue(function() { return remindersPage.pageTitlePresent });
   });
 
   it('links to Facebook Support Group', function() {
     // homePage.facebookSupportGroupButton.click();
 
-    // expect(
-    //   browser.wait(function() { return page.pageTitlePresent })
-    // ).toBe(true)
+    // waitAndExpectToBeTrue(function() { return page.pageTitlePresent });
   });
 });
