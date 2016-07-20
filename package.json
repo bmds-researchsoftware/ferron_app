@@ -62,6 +62,8 @@
   "name": "ferron_app",
   "description": "ferron_app: An Ionic project",
   "scripts": {
+    "build:android:staging": "./node_modules/.bin/ionic build android --buildConfig ~/.ssh/android-build.json --release",
+    "build:ios:staging": "./node_modules/.bin/ionic build ios --buildConfig ~/.ssh/ios-build.json --release",
     "test": "karma start karma.conf.js",
     "test:ci": "karma start karma-ci.conf.js",
     "typings": "typings"
