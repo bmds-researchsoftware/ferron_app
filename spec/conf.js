@@ -24,7 +24,7 @@ exports.config = {
               stream.write(new Buffer(png, 'base64'));
               stream.end();
             });
-          };
+          }
         };
       });
     });

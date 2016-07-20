@@ -42,7 +42,7 @@ describe('Home page', function() {
   it('links to Learn How To Cope page', function() {
     homePage.learnToCopeButton.click();
 
-    waitAndExpectToBeTrue(function() { return learnPage.pageTitlePresent })
+    waitAndExpectToBeTrue(function() { return learnPage.pageTitlePresent });
   });
 
   it('links to Coping Skills Index', function() {
