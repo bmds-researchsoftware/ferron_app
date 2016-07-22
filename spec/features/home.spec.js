@@ -1,17 +1,19 @@
-var ConfigurationPage = require('../pages/configuration.page.js')
-var CopingSkillsIndex = require('../pages/coping_skill_index.page.js')
-var HomePage = require('../pages/home.page.js')
-var LearnPage = require('../pages/learn_to_cope.page.js')
-var RemindersPage = require('../pages/reminders.page.js')
-var Expectations = require('../helpers/expectations.helper.js')
+var AboutPage = require('../pages/about.page.js'),
+  ConfigurationPage = require('../pages/configuration.page.js'),
+  CopingSkillsIndex = require('../pages/coping_skill_index.page.js'),
+  Expectations = require('../helpers/expectations.helper.js'),
+  HomePage = require('../pages/home.page.js'),
+  LearnPage = require('../pages/learn_to_cope.page.js'),
+  RemindersPage = require('../pages/reminders.page.js');
 
 describe('Home page', function() {
-  var configurationPage;
-  var copingSkillsIndex = new CopingSkillsIndex();
-  var homePage = new HomePage();
-  var learnPage = new LearnPage();
-  var remindersPage = new RemindersPage();
-  var waitAndExpectToBeTrue = Expectations.waitAndExpectToBeTrue
+  var aboutPage = new AboutPage(),
+    configurationPage,
+    copingSkillsIndex = new CopingSkillsIndex(),
+    homePage = new HomePage(),
+    learnPage = new LearnPage(),
+    remindersPage = new RemindersPage(),
+    waitAndExpectToBeTrue = Expectations.waitAndExpectToBeTrue;
 
   beforeEach(function() {
     // need a way to set the state
@@ -24,7 +26,13 @@ describe('Home page', function() {
     // would like to get this to work so I do not need a sleep
     waitAndExpectToBeTrue(function() { return homePage.pageTitlePresent });
 
-    browser.sleep(1000)
+    browser.sleep(500)
+  });
+
+  it('links to more information', function() {
+    homePage.aboutButton.click();
+
+    waitAndExpectToBeTrue(function() { return aboutPage.pageTitlePresent });
   });
 
   it('links to Start Here at first visit', function() {

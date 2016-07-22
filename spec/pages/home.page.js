@@ -7,6 +7,9 @@ HomePage.prototype = Object.create({}, {
   pageTitlePresent: {
     get: function() { return Finders.findTitle('Home'); }
   },
+  aboutButton: {
+    get: function() { return $('.bar-button-icon-only'); }
+  },
   startHereButton: {
     get: function() { return findButton('Start Here'); }
   },
