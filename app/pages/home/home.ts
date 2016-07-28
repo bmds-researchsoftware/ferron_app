@@ -5,6 +5,9 @@ import { RemindersPage } from '../../pages/reminders/reminders';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+/*
+ * The primary landing page of the application.
+ */
 @Component({
   templateUrl: 'build/pages/home/home.html'
 })

@@ -20,6 +20,9 @@ module.exports = function(config) {
       'node_modules/zone.js/dist/jasmine-patch.js',
       'node_modules/zone.js/dist/async-test.js',
       'node_modules/zone.js/dist/fake-async-test.js',
+      'node_modules/jasmine-ajax/lib/mock-ajax.js',
+      'node_modules/lovefield/dist/lovefield.min.js',
+      'node_modules/cache_and_sync_love/dist/cache_and_sync_love.min.js',
       'app/**/*.spec.ts',
       { pattern: 'node_modules/reflect-metadata/Reflect.js.map', included: false, served: true }, // 404 on the same
       { pattern: 'www/build/**/*.html', included: false }
@@ -64,8 +67,8 @@ module.exports = function(config) {
         global: {
           statements: 95,
           branches: 95,
-          functions: 85,
-          lines: 95
+          functions: 84,
+          lines: 93
         }
       }
     },

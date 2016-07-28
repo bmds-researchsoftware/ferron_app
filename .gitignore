@@ -11,3 +11,4 @@ plugins/
 Thumbs.db
 npm-debug.log
 spec/screenshots/
+.vscode

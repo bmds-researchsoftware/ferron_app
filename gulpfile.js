@@ -35,6 +35,10 @@ var copyScripts = require('ionic-gulp-scripts-copy');
 
 var isRelease = argv.indexOf('--release') > -1;
 
+var stage = argv.indexOf('--staging') > -1 ? 'staging' : (
+  argv.indexOf('--production') > -1 ? 'production' : 'development'
+);
+
 gulp.task('watch', ['clean'], function(done){
   runSequence(
     ['sass', 'html', 'fonts', 'scripts'],
@@ -66,7 +70,23 @@ gulp.task('build', ['clean'], function(done){
 gulp.task('sass', buildSass);
 gulp.task('html', copyHTML);
 gulp.task('fonts', copyFonts);
-gulp.task('scripts', copyScripts);
+gulp.task('scripts', function() {
+  return copyScripts({
+    src: [
+      'node_modules/es6-shim/es6-shim.min.js',
+      'node_modules/es6-shim/es6-shim.map',
+      'node_modules/zone.js/dist/zone.js',
+      'node_modules/reflect-metadata/Reflect.js',
+      'node_modules/reflect-metadata/Reflect.js.map',
+      'app/store/store-worker.js',
+      'app/store/cache.js',
+      'node_modules/lovefield/dist/lovefield.min.js',
+      'node_modules/lovefield/dist/lovefield.min.js.map',
+      'node_modules/cache_and_sync_love/dist/cache_and_sync_love.min.js',
+      'config/' + stage + '/config.js'
+    ]
+  });
+});
 gulp.task('clean', function(){
   return del('www/build');
 });

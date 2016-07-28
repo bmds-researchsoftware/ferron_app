@@ -3,6 +3,9 @@ import { FerronAppVersion } from '../../native-plugins/ferron-app-version.servic
 import { FerronDevice } from '../../native-plugins/ferron-device.service';
 import { Component } from '@angular/core';
 
+/*
+ * Provides metadata about the app alongside static content.
+ */
 @Component({
   providers: [Constants, FerronAppVersion, FerronDevice],
   templateUrl: 'build/pages/about/about.html'

@@ -1,4 +1,4 @@
-import { ConfigurationPage } from './pages/configuration/configuration';
+import { ConfigurationPage } from './pages/configuration/configuration.page';
 import { Component } from '@angular/core';
 import { Platform, ionicBootstrap } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
@@ -6,7 +6,7 @@ import { StatusBar } from 'ionic-native';
 @Component({
   template: '<ion-nav [root]="rootPage"></ion-nav>'
 })
-export class MyApp {
+export class FerronApp {
 
   private rootPage: any;
 
@@ -21,4 +21,4 @@ export class MyApp {
   }
 }
 
-ionicBootstrap(MyApp);
+ionicBootstrap(FerronApp);
