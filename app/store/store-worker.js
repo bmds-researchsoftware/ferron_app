@@ -6,12 +6,6 @@
   var STATUSES = { MESSAGE_RESOLVED: 'message_resolved' };
   var RESOURCE_TYPES = { CACHE: 'cache' };
 
-  context.importScripts('es6-shim.min.js');
-  context.importScripts('lovefield.min.js');
-  context.importScripts('cache_and_sync_love.min.js');
-  context.importScripts('config.js');
-  context.importScripts('cache.js');
-
   var Cache = context.CalmCopeQuit.Cache;
 
   context.onmessage = function onMessage(event) {

@@ -4,7 +4,7 @@
  */
 import { Injectable } from '@angular/core';
 
-const CACHE_WORKER_SCRIPT: string = 'build/js/store-worker.js';
+const CACHE_WORKER_SCRIPT: string = 'build/js/loader.js';
 
 function randomId(): number {
   return Math.floor(Math.random() * 1000000000);

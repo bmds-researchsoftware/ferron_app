@@ -78,6 +78,8 @@ gulp.task('scripts', function() {
       'node_modules/zone.js/dist/zone.js',
       'node_modules/reflect-metadata/Reflect.js',
       'node_modules/reflect-metadata/Reflect.js.map',
+      'vendor/worker.js',
+      'app/store/loader.js',
       'app/store/store-worker.js',
       'app/store/cache.js',
       'node_modules/lovefield/dist/lovefield.min.js',

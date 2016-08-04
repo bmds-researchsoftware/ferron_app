@@ -10,7 +10,9 @@
     "!node_modules/**/*"
   ],
   "exclude": [
+    "coverage",
     "node_modules",
+    "resources",
     "typings/global",
     "typings/global.d.ts"
   ],
