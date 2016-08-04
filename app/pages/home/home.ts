@@ -1,6 +1,7 @@
 import { AboutPage } from '../../pages/about/about';
 import { CopingSkillsPage } from '../../pages/coping-skills/coping-skills';
 import { LearnPage } from '../../pages/learn/learn';
+import { PromptsPage } from '../../pages/prompts/prompts.page';
 import { RemindersPage } from '../../pages/reminders/reminders';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
@@ -25,6 +26,10 @@ export class HomePage {
 
   public goLearn() {
     this.nav.push(LearnPage);
+  }
+
+  public goPrompts() {
+    this.nav.push(PromptsPage);
   }
 
   public goReminders() {

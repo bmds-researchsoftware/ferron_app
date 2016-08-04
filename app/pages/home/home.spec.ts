@@ -1,6 +1,7 @@
 import { AboutPage } from '../../pages/about/about';
 import { CopingSkillsPage } from '../../pages/coping-skills/coping-skills';
 import { LearnPage } from '../../pages/learn/learn';
+import { PromptsPage } from '../../pages/prompts/prompts.page';
 import { RemindersPage } from '../../pages/reminders/reminders';
 import { HomePage } from './home';
 import { beforeEachProviders, describe, inject, it } from '@angular/core/testing';
@@ -34,6 +35,14 @@ describe('HomePage', () => {
       homePage.goLearn();
 
       expect(stubNavController.push).toHaveBeenCalledWith(LearnPage);
+    }));
+  });
+
+  describe('#goPrompts', () => {
+    it('navigates to the PromptsPage', inject([HomePage], (homePage) => {
+      homePage.goPrompts();
+
+      expect(stubNavController.push).toHaveBeenCalledWith(PromptsPage);
     }));
   });
 

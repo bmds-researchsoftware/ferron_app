@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Calm. Cope. Quit.</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>How do you feel about smoking right now?</h3>
+
+  <ion-list>
+    <ion-item (click)="goPositiveFeedback()">
+      <h4>I'm trying not to smoke<br />and doing great!</h4>
+    </ion-item>
+
+    <ion-item>
+      <h4>I'm trying not to smoke<br />and need some help.</h4>
+    </ion-item>
+
+    <ion-item>
+      <h4>I'm smoking but I would like to learn<br />how to cut down.</h4>
+    </ion-item>
+
+    <ion-item (click)="goHome()">
+      <h4>I'm smoking and not ready<br />to do anything to change.</h4>
+    </ion-item>
+  </ion-list>
+</ion-content>

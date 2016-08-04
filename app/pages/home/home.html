@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar hideBackButton="true">
     <ion-title>Home</ion-title>
 
     <ion-buttons end>
@@ -16,7 +16,7 @@
     cope with your urges and cravings in order to quit.
   </p>
 
-  <button block>Start here</button>
+  <button block (click)="goPrompts()">Start here</button>
 
   <ion-card>
     <ion-list>
