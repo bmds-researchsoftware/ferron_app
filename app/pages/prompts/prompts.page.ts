@@ -1,5 +1,6 @@
-import { HomePage } from '../home/home';
+import { PromptsGetMotivatedTipPage } from './prompts-get-motivated-tip.page';
 import { PromptsPositiveFeedbackPage } from './prompts-positive-feedback.page';
+import { PromptsTryingToQuitPage } from './prompts-trying-to-quit.page';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
@@ -17,7 +18,11 @@ export class PromptsPage {
     this.nav.push(PromptsPositiveFeedbackPage);
   }
 
-  public goHome() {
-    this.nav.push(HomePage);
+  public goTryingToQuit() {
+    this.nav.push(PromptsTryingToQuitPage);
+  }
+
+  public goGetMotivatedTip() {
+    this.nav.push(PromptsGetMotivatedTipPage);
   }
 }

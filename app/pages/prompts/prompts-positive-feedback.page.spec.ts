@@ -3,7 +3,7 @@ import { PromptsPositiveFeedbackPage } from './prompts-positive-feedback.page';
 import { beforeEachProviders, describe, inject, it } from '@angular/core/testing';
 import { NavController } from 'ionic-angular';
 
-describe('HomePage', () => {
+describe('PromptsPositiveFeedbackPage', () => {
   let stubNavController = { push: jasmine.createSpy('push') };
 
   beforeEachProviders(() => [
