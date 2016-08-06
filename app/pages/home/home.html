@@ -11,27 +11,42 @@
 </ion-header>
 
 <ion-content padding class="home">
-  <p>
+  <h2>
     Check in about how you're coping with quitting. This app will help you
     cope with your urges and cravings in order to quit.
-  </p>
+  </h2>
 
-  <button block (click)="goPrompts()">Start here</button>
+  <ion-list>
+    <ion-item (click)="goPrompts()">
+      <h3 primary>Start here</h3>
+      <ion-icon primary name="play" item-right></ion-icon>
+    </ion-item>
 
-  <ion-card>
-    <ion-list>
-      <button ion-item (click)="goLearn()">
-        Learn to cope<br>
-        with urges to smoke
-      </button>
-      <button ion-item (click)="goCopingSkills()">List of coping skills</button>
-      <button ion-item (click)="goReminders()">Set your reminders</button>
-    </ion-list>
-  </ion-card>
+    <ion-item (click)="goLearn()">
+      <h3>Learn to cope<br>
+      with urges to smoke</h3>
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
 
-  <button secondary round large>
-    <ion-icon name="logo-facebook"></ion-icon>
-    Join our<br>
-    Facebook support group
-  </button>
+    <ion-item (click)="goCopingSkills()">
+      <h3>List of coping skills</h3>
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+
+    <ion-item (click)="goReminders()">
+      <h3>Set your reminders</h3>
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+  </ion-list>
 </ion-content>
+
+<ion-footer-bar>
+  <ion-toolbar secondary>
+    <ion-buttons class="toolbar-title">
+      <button default large>
+        <ion-icon name="logo-facebook"></ion-icon>
+        Join our Facebook support group
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer-bar>

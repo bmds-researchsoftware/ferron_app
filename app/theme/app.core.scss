@@ -7,8 +7,31 @@
 // By default each design mode includes these shared imports.
 // App Shared Sass variables belong in app.variables.scss.
 
+body {
+  font-size: 1.7rem;
+}
+
+h2 {
+  font-size: 1.9rem;
+}
+
 ion-footer-bar {
   position: absolute;
   bottom: 0px;
   width: 100%;
+}
+
+ion-label {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.bar-button {
+  font-size: 1.7rem;
+}
+
+.item {
+  h2, h3 {
+    font-size: 1.8rem;
+  }
 }
