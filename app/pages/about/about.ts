@@ -24,4 +24,8 @@ export class AboutPage {
       this.appVersion = v;
     });
   }
+
+  public codePushSync() {
+    (<any> window).codePush.sync();
+  }
 }
