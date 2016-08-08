@@ -1,6 +1,7 @@
 var AboutPage = require('../pages/about.page.js'),
   ConfigurationPage = require('../pages/configuration.page.js'),
   CopingSkillsIndex = require('../pages/coping_skill_index.page.js'),
+  CopingSkillsPrompts = require('../pages/coping_skills_prompts.page.js'),
   Expectations = require('../helpers/expectations.helper.js'),
   HomePage = require('../pages/home.page.js'),
   LearnPage = require('../pages/learn_to_cope.page.js'),
@@ -10,6 +11,7 @@ describe('Home page', function() {
   var aboutPage = new AboutPage(),
     configurationPage,
     copingSkillsIndex = new CopingSkillsIndex(),
+    copingSkillsPrompts = new CopingSkillsPrompts(),
     homePage = new HomePage(),
     learnPage = new LearnPage(),
     remindersPage = new RemindersPage(),
@@ -36,9 +38,11 @@ describe('Home page', function() {
   });
 
   it('links to Start Here at first visit', function() {
-    // homePage.startHereButton.click();
+    homePage.startHereButton.click();
 
-    // waitAndExpectToBeTrue(function() { return page.pageTitlePresent });
+    waitAndExpectToBeTrue(function() {
+      return copingSkillsPrompts.pageTitlePresent
+    });
   });
 
   it('links to Check-in after first visit', function() {
@@ -56,7 +60,9 @@ describe('Home page', function() {
   it('links to Coping Skills Index', function() {
     homePage.copingSkillsButton.click();
 
-    waitAndExpectToBeTrue(function() { return copingSkillsIndex.pageTitlePresent });
+    waitAndExpectToBeTrue(function() {
+      return copingSkillsIndex.pageTitlePresent
+    });
   });
 
   it('links to Set Your Reminders at first visit', function() {

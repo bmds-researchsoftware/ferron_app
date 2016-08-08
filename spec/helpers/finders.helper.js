@@ -1,6 +1,6 @@
 var Finders = {
-  findButton: function(text) {
-    return element(by.cssContainingText('button', text));
+  findItem: function(text) {
+    return element(by.cssContainingText('.item', text));
   },
   findTitle: function(title) {
     return browser.isElementPresent(by.cssContainingText('.toolbar-title', title));

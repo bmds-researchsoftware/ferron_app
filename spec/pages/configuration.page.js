@@ -10,7 +10,7 @@ ConfigurationPage.prototype = Object.create({}, {
     get: function() { return $('.text-input'); }
   },
   submitButton: {
-    get: function() { return $('.button-default'); }
+    get: function() { return element(by.cssContainingText('.button-default', 'Go Home')); }
   },
   configureParticipant: {
     value: function(token) {

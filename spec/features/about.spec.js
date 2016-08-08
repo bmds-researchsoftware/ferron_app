@@ -15,7 +15,7 @@ describe('About page', function() {
     browser.sleep(500);
 
     expect(aboutPage.versionItem).toBe('App version');
-    expect(aboutPage.stage).toBe('Stage\nstaging');
+    expect(aboutPage.stage).toBe('Stage\ndevelopment');
     expect(aboutPage.uuid).toBe('Device identifier\nDEFAULT-UUID');
   });
 });

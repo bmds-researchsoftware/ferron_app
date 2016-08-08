@@ -16,7 +16,7 @@ AboutPage.prototype = Object.create({}, {
     get: function() { return this.allAboutPageItems.get(1).getText(); }
   },
   uuid: {
-    get: function() { return this.allAboutPageItems.last().getText(); }
+    get: function() { return this.allAboutPageItems.get(2).getText(); }
   }
 });
 

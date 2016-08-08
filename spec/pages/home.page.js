@@ -1,5 +1,5 @@
 var Finders = require('../helpers/finders.helper.js');
-var findButton = Finders.findButton;
+var findItem = Finders.findItem;
 
 var HomePage = function() {};
 
@@ -11,25 +11,25 @@ HomePage.prototype = Object.create({}, {
     get: function() { return $('.bar-button-icon-only'); }
   },
   startHereButton: {
-    get: function() { return findButton('Start Here'); }
+    get: function() { return findItem('Start here'); }
   },
   checkInButton: {
-    get: function() { return findButton('Check-in'); }
+    get: function() { return findItem('Check-in'); }
   },
   learnToCopeButton: {
-    get: function() { return findButton('Learn to cope'); }
+    get: function() { return findItem('Learn to cope'); }
   },
   copingSkillsButton: {
-    get: function() { return findButton('List of coping skills'); }
+    get: function() { return findItem('List of coping skills'); }
   },
   setYourRemindersButton: {
-    get: function() { return findButton('Set your reminders'); }
+    get: function() { return findItem('Set your reminders'); }
   },
   yourRemindersButton: {
-    get: function() { return findButton('Your reminders'); }
+    get: function() { return findItem('Your reminders'); }
   },
   facebookSupportGroupButton: {
-    get: function() { return findButton('Join our Facebook support group'); }
+    get: function() { return element(by.cssContainingText('button', 'Join our Facebook support group')); }
   }
 });
 
