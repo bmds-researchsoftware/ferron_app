@@ -9,6 +9,7 @@
                         directory + 'lovefield.min.js',
                         directory + 'cache_and_sync_love.min.js',
                         directory + 'config.js',
+                        directory + 'database.js',
                         directory + 'cache.js',
                         directory + 'store-worker.js');
 

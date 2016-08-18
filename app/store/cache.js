@@ -3,8 +3,8 @@
  * synchronization with the server.
  */
 (function(context) {
-  var SCHEMA_NAME = 'calmcopequit',
-      SCHEMA_VERSION = 1;
+  var SCHEMA_NAME = context.CalmCopeQuit.SCHEMA_NAME;
+  var SCHEMA_VERSION = context.CalmCopeQuit.SCHEMA_VERSION;
   var PAYLOADS_API_PATH = '/token_auth/api/payloads';
   var STATUSES = {
     Initialized: 'initialized',
@@ -48,6 +48,8 @@
         .addColumn('model', Types.STRING)
         .addColumn('platform', Types.STRING)
         .addColumn('device_version', Types.STRING);
+
+      this.context.CalmCopeQuit.defineSchema();
     },
 
     onUpgrade: function onUpgrade(rawDb) {
@@ -114,6 +116,11 @@
       }
     },
   };
+
+  context.CalmCopeQuit.syncableResources.forEach(function(resource) {
+    Cache.syncableResources[resource.name] = resource.resource
+                                             .setSchemaBuilder(schemaBuilder);
+  })
 
   Cache.localResources.AuthenticationTokens = Object.create(context.cbit.LocalResource)
     .setSchemaBuilder(schemaBuilder)

@@ -81,6 +81,7 @@ gulp.task('scripts', function() {
       'vendor/worker.js',
       'app/store/loader.js',
       'app/store/store-worker.js',
+      'app/store/database.js',
       'app/store/cache.js',
       'node_modules/lovefield/dist/lovefield.min.js',
       'node_modules/lovefield/dist/lovefield.min.js.map',
