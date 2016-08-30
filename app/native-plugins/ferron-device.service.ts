@@ -8,9 +8,23 @@ let DEFAULT_UUID: string = 'DEFAULT-UUID';
  */
 @Injectable()
 export class FerronDevice {
-  public uuid: string = Device.device.uuid || DEFAULT_UUID;
-  public version: string = Device.device.version || '';
-  public manufacturer: string = Device.device.manufacturer || '';
-  public model: string = Device.device.model || '';
-  public platform: string = Device.device.platform || '';
+  public uuid(): string {
+    return Device.device.uuid || DEFAULT_UUID;
+  }
+
+  public version(): string {
+    return Device.device.version || '';
+  }
+
+  public manufacturer(): string {
+    return Device.device.manufacturer || '';
+  }
+
+  public model(): string {
+    return Device.device.model || '';
+  }
+
+  public platform(): string {
+    return Device.device.platform || '';
+  }
 }

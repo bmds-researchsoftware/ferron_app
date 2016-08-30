@@ -19,7 +19,7 @@ export class AboutPage {
               private version: FerronAppVersion,
               private device: FerronDevice) {
     this.appStage = constants.appStage;
-    this.deviceUuid = device.uuid;
+    this.deviceUuid = device.uuid();
     version.getVersionNumber().then(v => {
       this.appVersion = v;
     });

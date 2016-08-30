@@ -16,7 +16,7 @@ describe('AboutPage', () => {
   let stubAppVersion = {
     getVersionNumber: () => { return versionPromise; }
   };
-  let stubDevice = { uuid: 'abc123' };
+  let stubDevice = { uuid: () => 'abc123' };
 
   beforeEachProviders(() => [
     AboutPage,

@@ -86,6 +86,7 @@ gulp.task('scripts', function() {
       'node_modules/lovefield/dist/lovefield.min.js',
       'node_modules/lovefield/dist/lovefield.min.js.map',
       'node_modules/cache_and_sync_love/dist/cache_and_sync_love.min.js',
+      'node_modules/cache_and_sync_love/dist/cache_and_sync_love.js.map',
       'config/' + stage + '/config.js'
     ]
   });

@@ -36,7 +36,7 @@ export class ConfigurationPage {
 
   public createAuthenticationToken() {
     this.tokens.setUrl(this.constants.serverUrl + TOKENS_RESOURCE_PATH);
-    this.tokens.setClientUuid(this.device.uuid);
+    this.tokens.setClientUuid(this.device.uuid());
 
     return this.tokens.create(this.model.token).then(response => {
       let authenticationToken = response.data.value;

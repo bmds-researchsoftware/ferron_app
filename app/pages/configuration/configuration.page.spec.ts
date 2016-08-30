@@ -19,11 +19,11 @@ describe('ConfigurationPage', () => {
     setUrl: () => void 0
   };
   let device = {
-    manufacturer: 'manufacturer',
-    model: 'model',
-    platform: 'platform',
-    uuid: 'uuid',
-    version: 'version'
+    manufacturer: () => 'manufacturer',
+    model: () => 'model',
+    platform: () => 'platform',
+    uuid: () => 'uuid',
+    version: () => 'version'
   };
   let stubNavController = { push: jasmine.createSpy('push') };
   let stubStore = {
