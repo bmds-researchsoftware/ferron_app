@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "dependencies": {
     "@angular/common": "2.0.0-rc.4",
     "@angular/compiler": "2.0.0-rc.4",
@@ -65,7 +65,9 @@
   "description": "ferron_app: An Ionic project",
   "scripts": {
     "build:android:staging": "./node_modules/.bin/ionic build android --buildConfig ~/.ssh/android-build.json --release --staging",
+    "build:android:production": "./node_modules/.bin/ionic build android --buildConfig ~/.ssh/android-build.json --release --production",
     "build:ios:staging": "./node_modules/.bin/ionic build ios --buildConfig ~/.ssh/ios-build.json --release --staging",
+    "build:ios:production": "./node_modules/.bin/ionic build ios --buildConfig ~/.ssh/ios-build.json --release --production",
     "test": "karma start karma.conf.js",
     "test:ci": "karma start karma-ci.conf.js",
     "typings": "typings"
