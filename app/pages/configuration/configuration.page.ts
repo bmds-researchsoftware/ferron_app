@@ -1,10 +1,12 @@
 import { Constants } from '../../constants.service';
 import { FerronDevice } from '../../native-plugins/ferron-device.service';
+import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
 import { HomePage } from '../../pages/home/home';
 import { Store } from '../../store/store.service';
 import { AuthenticationTokens } from './authentication-tokens.service';
 import { Configuration } from './configuration.model';
 import { Component } from '@angular/core';
+import { Platform } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
 
 let TOKENS_RESOURCE_PATH = '/token_auth/api/authentication_tokens';
@@ -14,7 +16,8 @@ let TOKENS_RESOURCE_PATH = '/token_auth/api/authentication_tokens';
  * the server.
  */
 @Component({
-  providers: [AuthenticationTokens, Constants, FerronDevice, Store],
+  providers: [AuthenticationTokens, Constants, FerronDevice, FerronSqlite,
+              Store],
   templateUrl: 'build/pages/configuration/configuration.html'
 })
 export class ConfigurationPage {
@@ -23,11 +26,23 @@ export class ConfigurationPage {
   constructor(private constants: Constants,
               private device: FerronDevice,
               private nav: NavController,
+              private platform: Platform,
+              private sqlite: FerronSqlite,
               private store: Store,
               private tokens: AuthenticationTokens) {
+    this.platform.ready().then(() => {
+      this.sqlite.initialize().then(() => {
+        this.authorize();
+      });
+    });
+  }
+
+  public authorize() {
     this.store.authenticate()
-      .then(this.goHome.bind(this))
-      .catch(() => void 0);
+        .then(() => {
+          this.goHome();
+        })
+        .catch(() => void 0);
   }
 
   public goHome() {
@@ -40,18 +55,18 @@ export class ConfigurationPage {
 
     return this.tokens.create(this.model.token).then(response => {
       let authenticationToken = response.data.value;
-      this.store.save(this.store.NAMES.AuthenticationTokens, {
+      this.sqlite.persist('authentication_tokens', {
         value: authenticationToken
       });
-      this.store.save(this.store.NAMES.Devices, {
-        device_uuid: this.device.uuid,
-        device_version: this.device.version,
-        manufacturer: this.device.manufacturer,
-        model: this.device.model,
-        platform: this.device.platform
+      this.sqlite.persist('devices', {
+        device_uuid: this.device.uuid(),
+        device_version: this.device.version(),
+        manufacturer: this.device.manufacturer(),
+        model: this.device.model(),
+        platform: this.device.platform()
       });
-      this.goHome();
-    }).catch(function(error) {
+      this.authorize();
+    }).catch(error => {
       alert(error.message);
     });
   }

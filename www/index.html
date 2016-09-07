@@ -30,25 +30,11 @@
   <script src="build/js/zone.js"></script>
   <!-- the configurable options -->
   <script src="build/js/config.js"></script>
-  <!-- Lovefield relational database -->
-  <script src="build/js/lovefield.min.js"></script>
-  <!-- data storage and synchronization -->
-  <script src="build/js/cache_and_sync_love.min.js"></script>
-  <!-- configure fake Web Workers for Apple -->
-  <script>
-    if (isApple()) {
-      bypassWebWorkers();
-    }
-
-    function isApple() {
-      return navigator.vendor.indexOf('Apple') > -1;
-    }
-
-    function bypassWebWorkers() {
-      window.forceIframeWorker = true;
-    }
-  </script>
-  <script src="build/js/worker.js"></script>
+  <script src="build/js/md5.min.js"></script>
+  <script src="build/js/Ajax.js"></script>
+  <script src="build/js/AuthenticationTokensResource.js"></script>
+  <script src="build/js/Payload.js"></script>
+  <script src="build/js/Uuid.js"></script>
   <!-- the bundle which is built from the app's source code -->
   <script src="build/js/app.bundle.js"></script>
 </body>

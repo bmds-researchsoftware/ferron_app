@@ -21,10 +21,13 @@ module.exports = function(config) {
       'node_modules/zone.js/dist/async-test.js',
       'node_modules/zone.js/dist/fake-async-test.js',
       'node_modules/zone.js/dist/sync-test.js',
-      'node_modules/zone.js/dist/proxy',          // Missing: SyncTestZoneSpec
+      'node_modules/zone.js/dist/proxy.js',          // Missing: SyncTestZoneSpec
       'node_modules/zone.js/dist/jasmine-patch.js',
-      'node_modules/lovefield/dist/lovefield.min.js',
-      'node_modules/cache_and_sync_love/dist/cache_and_sync_love.min.js',
+      'app/lib/md5.min.js',
+      'app/lib/Ajax.js',
+      'app/lib/AuthenticationTokensResource.js',
+      'app/lib/Payload.js',
+      'app/lib/Uuid.js',
       'app/**/*.spec.ts',
       { pattern: 'node_modules/reflect-metadata/Reflect.js.map', included: false, served: true }, // 404 on the same
       { pattern: 'www/build/**/*.html', included: false }

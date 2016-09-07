@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 
-let cbit = (<any> window).cbit || {};
-
 type serverResponse = {
   data: { value: string }
 }
@@ -15,6 +13,7 @@ export class AuthenticationTokens {
   private resource;
 
   constructor() {
+    let cbit = (<any> window).cbit || {};
     this.resource = Object.create(cbit.AuthenticationTokensResource);
   }
 

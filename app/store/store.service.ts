@@ -2,149 +2,73 @@
  * Acts as a proxy for the Web Worker side of things. Passes messages to the
  * StoreWorker.
  */
+import { FerronSqlite } from '../native-plugins/ferron-sqlite.service';
 import { Injectable } from '@angular/core';
+import { Network } from 'ionic-native';
 
-const CACHE_WORKER_SCRIPT: string = 'build/js/loader.js';
-
-function randomId(): number {
-  return Math.floor(Math.random() * 1000000000);
-}
-
-type WorkerRequestHandle = {
-  requestId: number,
-  onReject: (reason?: any) => void,
-  onResolve: (value?: {} | PromiseLike<{}>) => void,
-  promise: Promise<{}>
-}
-
-type WorkerRequest = {
-  argument?: string,
-  method: string,
-  resource: string,
-  id?: number
-}
-
-type WorkerResponse = {
-  status: string,
-  requestId: number,
-  result: any
-}
+const PAYLOADS_API_PATH = '/token_auth/api/payloads';
+const SYNC_PERIOD_IN_MS = 2 * 60 * 1000;
 
 @Injectable()
 export class Store {
   private static authentication: Promise<{}>;
   private static authenticated: (value?: {} | PromiseLike<{}>) => void;
   private static notAuthenticated: (reason?: any) => void;
-  private static cacheWorker: Worker;
-  private static RequestHandles: {
-    [requestId: number]: WorkerRequestHandle
-  } = {};
 
-  public STATUSES = {
-    Authenticated: 'authenticated',
-    Initialized: 'initialized',
-    MessageResolved: 'message_resolved'
-  };
-
-  public NAMES = {
-    AuthenticationTokens: 'AuthenticationTokens',
-    Devices: 'Devices'
-  };
-
-  public save(resourceType: string, data: any): Promise<{}> {
-    const PERSIST: string = 'persist';
-
-    return this.createRequest({
-      argument: data,
-      method: PERSIST,
-      resource: resourceType
-    });
-  }
-
-  public createRequest(request: WorkerRequest): Promise<{}> {
-    if (Store.cacheWorker == null) {
-      throw new Error('Expected reference to a Worker was null');
-    }
-
-    let requestHandle: WorkerRequestHandle = {
-      onReject: null,
-      onResolve: null,
-      promise: null,
-      requestId: randomId()
-    };
-    requestHandle.promise = new Promise(function(resolve, reject) {
-      requestHandle.onResolve = resolve;
-      requestHandle.onReject = reject;
-    });
-    Store.RequestHandles[requestHandle.requestId] = requestHandle;
-    request.id = requestHandle.requestId;
-    Store.cacheWorker.postMessage(request);
-
-    return requestHandle.promise;
-  }
+  constructor(private sqlite: FerronSqlite) {}
 
   public authenticate(): Promise<{}> {
     if (Store.authentication == null) {
-      Store.authentication = new Promise(function(resolve, reject) {
+      Store.authentication = new Promise((resolve, reject) => {
         Store.authenticated = resolve;
         Store.notAuthenticated = reject;
       });
-      this.loadWorker();
-      this.initializeCache();
+      this.checkAuthentication();
     }
 
     return Store.authentication;
-  }
-
-  public loadWorker(loader?: Worker): void {
-    if (Store.cacheWorker != null) {
-      return;
-    }
-
-    Store.cacheWorker = loader || new Worker(CACHE_WORKER_SCRIPT);
-    Store.cacheWorker.onmessage = this.onWorkerMessage.bind(this);
-    Store.cacheWorker.onerror = this.onWorkerError;
-  }
-
-  public terminateWorker(): void {
-    if (Store.cacheWorker == null) {
-      return;
-    }
-
-    Store.cacheWorker.terminate();
-    Store.cacheWorker = null;
   }
 
   public resetAuthentication(): void {
     Store.authentication = null;
   }
 
-  private onWorkerMessage(event: { data: WorkerResponse }): void {
-    if (event.data.status === this.STATUSES.Authenticated) {
+  private checkAuthentication() {
+    this.sqlite.first('authentication_tokens').then(token => {
+      if (token == null) {
+        Store.notAuthenticated();
+        Store.authentication = null;
+        Store.authenticated = null;
+        Store.notAuthenticated = null;
+
+        return;
+      }
+
       Store.authenticated();
-    } else if (event.data.status === this.STATUSES.Initialized) {
-      Store.notAuthenticated();
-      Store.authentication = null;
-      Store.authenticated = null;
-      Store.notAuthenticated = null;
-    } else if (event.data.status === this.STATUSES.MessageResolved) {
-      let handle = Store.RequestHandles[event.data.requestId];
-      handle.onResolve(event.data.result);
-      delete Store.RequestHandles[event.data.requestId];
-    }
+      this.sqlite.first('devices').then(device => {
+        this.startSynchronization(device, token);
+      });
+    });
   }
 
-  private onWorkerError(event: ErrorEvent): void {
-    window.alert('An error occurred: ' + event.message);
-    Store.notAuthenticated();
-  }
+  private startSynchronization(device, token) {
+    let cbit = (<any> window).cbit;
+    let CalmCopeQuit = (<any> window).CalmCopeQuit;
 
-  private initializeCache() {
-    let initializeCache: WorkerRequest = {
-      method: 'initialize',
-      resource: 'cache'
-    };
-
-    Store.cacheWorker.postMessage(initializeCache);
+    cbit.Payload
+        .setUrl(CalmCopeQuit.SERVER_URL + PAYLOADS_API_PATH)
+        .setSecret(token.value)
+        .setKey(device.device_uuid);
+    this.sqlite.setPayloadResource(cbit.Payload);
+    this.sqlite.setPeriod(SYNC_PERIOD_IN_MS);
+    this.sqlite.setNetwork({
+           hasConnection() {
+             let NONE = 'none';
+             let UNKNOWN = 'unknown';
+             return Network.connection !== NONE &&
+                    Network.connection !== UNKNOWN;
+           }
+         });
+    this.sqlite.run();
   }
 }

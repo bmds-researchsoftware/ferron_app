@@ -10,6 +10,21 @@ This builds and installs the app. Further options are documented here:
 This was built in Visual Studio Code, and contains the `.vscode` directory in
 version control to aid configuration.
 
+## Debugging
+
+Locate the iOS sqlite database for your simulator via
+
+`find ~/Library/Developer/CoreSimulator/Devices/ -name calmcopequit.db`
+
+You can view and manipulate the data with an application such as
+[DB Browser for SQLite](http://sqlitebrowser.org/), or via the console.
+
+Note: this assumes Xcode 7.X.
+
+Fetch the Android sqlite database for your emulator via
+
+`adb pull /data/data/edu.northwestern.cbits.calmcopequit/databases/calmcopequit.db`
+
 ## Building
 
 ### Browser

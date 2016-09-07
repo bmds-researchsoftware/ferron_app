@@ -11,9 +11,7 @@
     </ion-card-header>
 
     <ion-card-content>
-      Worried about gaining weight? Instead of eating during a craving, get out
-      and have a 10-15 minute walk. Walking can help you feel better and not
-      want that cigarette.
+      {{ tipBody | async }}
     </ion-card-content>
 
     <ion-item>
@@ -28,12 +26,18 @@
   </ion-card>
 </ion-content>
 
-<ion-footer-bar>
-  <ion-toolbar no-border-top primary>
-    <ion-buttons class="toolbar-title">
-      <button>
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons>
+      <button primary (click)="reloadPage()">
         Click or swipe for next tip
       </button>
     </ion-buttons>
+
+    <ion-buttons end>
+      <button (click)="goHome()">
+        Finish
+      </button>
+    </ion-buttons>
   </ion-toolbar>
-</ion-footer-bar>
+</ion-footer>

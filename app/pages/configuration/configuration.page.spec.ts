@@ -1,14 +1,31 @@
 
 import { Constants } from '../../constants.service';
 import { FerronDevice } from '../../native-plugins/ferron-device.service';
+import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
 import { HomePage } from '../../pages/home/home';
 import { Store } from '../../store/store.service';
 import { AuthenticationTokens } from './authentication-tokens.service';
 import { ConfigurationPage } from './configuration.page';
 import { beforeEachProviders, describe, inject, it } from '@angular/core/testing';
+import { Platform } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
 
 describe('ConfigurationPage', () => {
+  let device = {
+    manufacturer: () => 'manufacturer',
+    model: () => 'model',
+    platform: () => 'platform',
+    uuid: () => 'uuid',
+    version: () => 'version'
+  };
+  let stubNavController = { push: jasmine.createSpy('push') };
+  let stubPlatform = {
+    ready() { return Promise.resolve(); }
+  };
+  let stubSqlite = {
+    initialize() { return Promise.resolve(); },
+    persist: jasmine.createSpy('persist')
+  };
   let tokenAttrs = { value: 'abcde' };
   let stubAuthTokens = {
     create(token) {
@@ -18,28 +35,20 @@ describe('ConfigurationPage', () => {
     setClientUuid: () => void 0,
     setUrl: () => void 0
   };
-  let device = {
-    manufacturer: () => 'manufacturer',
-    model: () => 'model',
-    platform: () => 'platform',
-    uuid: () => 'uuid',
-    version: () => 'version'
-  };
-  let stubNavController = { push: jasmine.createSpy('push') };
   let stubStore = {
-    NAMES: {},
-    authenticate: () => { return Promise.reject(null); },
-    save: jasmine.createSpy('save')
+    authenticate: () => { return Promise.reject(null); }
   };
   let configPage;
 
   beforeEachProviders(() => [
     ConfigurationPage,
-    { provide: AuthenticationTokens, useValue: stubAuthTokens},
     { provide: Constants, useValue: {} },
     { provide: FerronDevice, useValue: device },
     { provide: NavController, useValue: stubNavController },
-    { provide: Store, useValue: stubStore }
+    { provide: Platform, useValue: stubPlatform },
+    { provide: FerronSqlite, useValue: stubSqlite },
+    { provide: Store, useValue: stubStore },
+    { provide: AuthenticationTokens, useValue: stubAuthTokens}
   ]);
 
   beforeEach(inject([ConfigurationPage], (config) => {
@@ -60,7 +69,7 @@ describe('ConfigurationPage', () => {
         configPage.createAuthenticationToken();
 
         stubAuthTokens.createPromise.then(() => {
-          expect(stubStore.save).toHaveBeenCalledWith(void 0, {
+          expect(stubSqlite.persist).toHaveBeenCalledWith('authentication_tokens', {
             value: 'abcde'
           });
           done();
@@ -71,12 +80,12 @@ describe('ConfigurationPage', () => {
         configPage.createAuthenticationToken();
 
         stubAuthTokens.createPromise.then(() => {
-          expect(stubStore.save).toHaveBeenCalledWith(void 0, {
-            device_uuid: device.uuid,
-            device_version: device.version,
-            manufacturer: device.manufacturer,
-            model: device.model,
-            platform: device.platform
+          expect(stubSqlite.persist).toHaveBeenCalledWith('devices', {
+            device_uuid: device.uuid(),
+            device_version: device.version(),
+            manufacturer: device.manufacturer(),
+            model: device.model(),
+            platform: device.platform()
           });
           done();
         });
