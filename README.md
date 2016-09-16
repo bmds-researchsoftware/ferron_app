@@ -1,5 +1,13 @@
 ## Emulating
 
+### Requirements
+
+*  cordova v ~6.3.1
+*  Xcode
+*  Android SDK
+*  Set up an Android AVD
+*  run `npm install -g ios-sim`
+
 This builds and installs the app. Further options are documented here:
 [http://ionicframework.com/docs/v2/cli/emulate/].
 
