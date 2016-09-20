@@ -1,3 +1,4 @@
+import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
 import { AboutPage } from '../../pages/about/about';
 import { CopingSkillsPage } from '../../pages/coping-skills/coping-skills';
 import { LearnPage } from '../../pages/learn/learn';
@@ -9,9 +10,15 @@ import { NavController } from 'ionic-angular';
 
 describe('HomePage', () => {
   let stubNavController = { push: jasmine.createSpy('push') };
+  let stubSqlite = {
+    initialize() { return Promise.resolve(); },
+    persist: jasmine.createSpy('persist')
+  };
 
   beforeEachProviders(() => [
-    HomePage, { provide: NavController, useValue: stubNavController }
+    HomePage,
+    { provide: NavController, useValue: stubNavController },
+    { provide: FerronSqlite, useValue: stubSqlite }
   ]);
 
   describe('#goAbout', () => {
@@ -19,6 +26,15 @@ describe('HomePage', () => {
       homePage.goAbout();
 
       expect(stubNavController.push).toHaveBeenCalledWith(AboutPage);
+    }));
+
+    it('records the button press', inject([HomePage], (homePage) => {
+      homePage.goAbout();
+
+      expect(stubSqlite.persist).toHaveBeenCalledWith('button_presses', {
+        button_label: 'About',
+        current_page: 'Main page'
+      });
     }));
   });
 
@@ -28,6 +44,15 @@ describe('HomePage', () => {
 
       expect(stubNavController.push).toHaveBeenCalledWith(CopingSkillsPage);
     }));
+
+    it('records the button press', inject([HomePage], (homePage) => {
+      homePage.goAbout();
+
+      expect(stubSqlite.persist).toHaveBeenCalledWith('button_presses', {
+        button_label: 'List of coping skills',
+        current_page: 'Main page'
+      });
+    }));
   });
 
   describe('#goLearn', () => {
@@ -35,6 +60,15 @@ describe('HomePage', () => {
       homePage.goLearn();
 
       expect(stubNavController.push).toHaveBeenCalledWith(LearnPage);
+    }));
+
+    it('records the button press', inject([HomePage], (homePage) => {
+      homePage.goAbout();
+
+      expect(stubSqlite.persist).toHaveBeenCalledWith('button_presses', {
+        button_label: 'Learn to cope with urges to smoke',
+        current_page: 'Main page'
+      });
     }));
   });
 
@@ -44,6 +78,15 @@ describe('HomePage', () => {
 
       expect(stubNavController.push).toHaveBeenCalledWith(PromptsPage);
     }));
+
+    it('records the button press', inject([HomePage], (homePage) => {
+      homePage.goAbout();
+
+      expect(stubSqlite.persist).toHaveBeenCalledWith('button_presses', {
+        button_label: 'Start here',
+        current_page: 'Main page'
+      });
+    }));
   });
 
   describe('#goReminders', () => {
@@ -51,6 +94,15 @@ describe('HomePage', () => {
       homePage.goReminders();
 
       expect(stubNavController.push).toHaveBeenCalledWith(RemindersPage);
+    }));
+
+    it('records the button press', inject([HomePage], (homePage) => {
+      homePage.goAbout();
+
+      expect(stubSqlite.persist).toHaveBeenCalledWith('button_presses', {
+        button_label: 'Set your reminders',
+        current_page: 'Main page'
+      });
     }));
   });
 });

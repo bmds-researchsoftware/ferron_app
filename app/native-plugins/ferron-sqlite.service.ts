@@ -15,6 +15,18 @@ const TABLES: Table[] = [
       ['uuid', 'VARCHAR(36) PRIMARY KEY'],
       ['client_created_at', 'INTEGER'],
       ['client_updated_at', 'INTEGER'],
+      ['is_dirty', 'INTEGER'],
+      ['current_page', 'VARCHAR(64)'],
+      ['button_label', 'VARCHAR(64)']
+    ],
+    isSyncable: true,
+    name: 'button_presses'
+  },
+  {
+    columns: [
+      ['uuid', 'VARCHAR(36) PRIMARY KEY'],
+      ['client_created_at', 'INTEGER'],
+      ['client_updated_at', 'INTEGER'],
       ['device_uuid', 'VARCHAR(64)'],
       ['device_version', 'VARCHAR(64)'],
       ['is_dirty', 'INTEGER'],
