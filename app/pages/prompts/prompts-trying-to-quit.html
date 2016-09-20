@@ -12,18 +12,15 @@
   </ion-card>
 
   <ion-list>
-    <ion-item (click)="goLearnASkill()">
-      <h4>Use a Skill to help me cope</h4>
-    </ion-item>
+    <button ion-item (click)="goLearnASkill()">Use a Skill to help me cope</button>
 
-    <ion-item (click)="goQuitTip()">
-      <h4>Get a Quick Tip on how not to smoke</h4>
-    </ion-item>
+    <button ion-item (click)="goQuitTip()">Get a Quick Tip on how not to smoke</button>
   </ion-list>
 
-  <button secondary round large>
+  <button secondary round large class="full-width tall-button">
     <ion-icon name="logo-facebook"></ion-icon>
-    Connect with my<br>
-    Facebook support group
+    Connect with<br />
+    my Facebook<br />
+    support group
   </button>
 </ion-content>
