@@ -14,12 +14,14 @@
   </ion-card>
 
   <ion-list>
-    <ion-item>
-      <h4>Listen to learn</h4>
+    <ion-item (click)="goListen()">
+      <h3>Listen to learn</h3>
+      <ion-icon name="arrow-forward" item-right></ion-icon>
     </ion-item>
 
-    <ion-item>
-      <h4>Watch to learn</h4>
+    <ion-item (click)="goWatch()">
+      <h3>Watch to learn</h3>
+      <ion-icon name="arrow-forward" item-right></ion-icon>
     </ion-item>
   </ion-list>
 </ion-content>
