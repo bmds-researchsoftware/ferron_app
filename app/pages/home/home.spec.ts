@@ -21,6 +21,11 @@ describe('HomePage', () => {
     { provide: FerronSqlite, useValue: stubSqlite }
   ]);
 
+  afterEach(() => {
+    window.localStorage.clear();
+    stubSqlite.persist.calls.reset();
+  });
+
   describe('#goAbout', () => {
     it('navigates to the AboutPage', inject([HomePage], (homePage) => {
       homePage.goAbout();
@@ -80,12 +85,18 @@ describe('HomePage', () => {
     }));
 
     it('records the button press', inject([HomePage], (homePage) => {
-      homePage.goAbout();
+      homePage.goPrompts();
 
       expect(stubSqlite.persist).toHaveBeenCalledWith('button_presses', {
         button_label: 'Start here',
         current_page: 'Main page'
       });
+    }));
+
+    it('changes the label', inject([HomePage], (homePage) => {
+      homePage.goPrompts();
+
+      expect(homePage.promptsLabel()).toEqual('Check-in');
     }));
   });
 
@@ -97,7 +108,7 @@ describe('HomePage', () => {
     }));
 
     it('records the button press', inject([HomePage], (homePage) => {
-      homePage.goAbout();
+      homePage.goReminders();
 
       expect(stubSqlite.persist).toHaveBeenCalledWith('button_presses', {
         button_label: 'Set your reminders',

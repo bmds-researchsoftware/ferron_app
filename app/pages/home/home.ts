@@ -22,32 +22,49 @@ export class HomePage {
 
   public goAbout() {
     const buttonLabel = 'About';
-    this.recordNav(this.pageName, buttonLabel);
     this.nav.push(AboutPage);
+    this.recordNav(this.pageName, buttonLabel);
   }
 
   public goCopingSkills() {
     const buttonLabel = 'List of coping skills';
-    this.recordNav(this.pageName, buttonLabel);
     this.nav.push(CopingSkillsPage);
+    this.recordNav(this.pageName, buttonLabel);
   }
 
   public goLearn() {
     const buttonLabel = 'Learn to cope with urges to smoke';
-    this.recordNav(this.pageName, buttonLabel);
     this.nav.push(LearnPage);
+    this.recordNav(this.pageName, buttonLabel);
   }
 
   public goPrompts() {
-    const buttonLabel = 'Start here';
-    this.recordNav(this.pageName, buttonLabel);
     this.nav.push(PromptsPage);
+    this.recordNav(this.pageName, this.promptsLabel());
   }
 
   public goReminders() {
     const buttonLabel = 'Set your reminders';
-    this.recordNav(this.pageName, buttonLabel);
     this.nav.push(RemindersPage);
+    this.recordNav(this.pageName, buttonLabel);
+  }
+
+  public promptsLabel(): string {
+    if (!this.isInitialized()) {
+      return 'Start here';
+    }
+
+    return 'Check-in';
+  }
+
+  private isInitialized(): boolean {
+    return window.localStorage.getItem('isInitialized') != null;
+  }
+
+  private recordInitialization() {
+    if (window.localStorage.getItem('isInitialized') == null) {
+      window.localStorage.setItem('isInitialized', 'true');
+    }
   }
 
   private recordNav(pageName: string, buttonLabel: string) {
@@ -57,5 +74,6 @@ export class HomePage {
         current_page: pageName
       });
     });
+    this.recordInitialization();
   }
 }
