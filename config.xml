@@ -9,6 +9,8 @@
   <access origin="https://feldspar.cbits.northwestern.edu"/>
   <access origin="https://codepush.azurewebsites.net"/>
   <access origin="https://codepush.blob.core.windows.net"/>
+  <access origin="https://player.vimeo.com"/>
+  <access origin="https://*.vimeocdn.com"/>
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
   <allow-intent href="tel:*"/>
@@ -41,6 +43,8 @@
     <preference name="CodePushDeploymentKey" value="YOUR-IOS-DEPLOYMENT-KEY"/>
     <allow-intent href="itms:*"/>
     <allow-intent href="itms-apps:*"/>
+    <allow-navigation href="about:blank"/>
+    <allow-navigation href="https://player.vimeo.com/*"/>
     <icon height="57" src="resources/ios/icon/icon.png" width="57"/>
     <icon height="114" src="resources/ios/icon/icon@2x.png" width="114"/>
     <icon height="40" src="resources/ios/icon/icon-40.png" width="40"/>

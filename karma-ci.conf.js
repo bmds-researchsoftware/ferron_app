@@ -51,7 +51,13 @@ module.exports = function(config) {
         ['browserify-istanbul', {
           instrumenter: require('isparta'),
           instrumenterConfig: { embedSource: true },
-          ignore: ['**/*.spec.ts','**/*.d.ts']
+          ignore: [
+            '**/authentication-tokens.service.ts',
+            '**/constants.service.ts',
+            '**/native-plugins/**',
+            '**/*.spec.ts',
+            '**/*.d.ts'
+          ]
         }]
       ],
       plugin: [

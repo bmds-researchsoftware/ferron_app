@@ -67,6 +67,7 @@
     "build:android:development": "./node_modules/.bin/ionic build android --debug --development",
     "build:android:staging": "./node_modules/.bin/ionic build android --buildConfig ~/.ssh/android-build.json --release --staging",
     "build:android:production": "./node_modules/.bin/ionic build android --buildConfig ~/.ssh/android-build.json --release --production",
+    "build:ios:development": "./node_modules/.bin/ionic build ios --debug --development",
     "build:ios:staging": "./node_modules/.bin/ionic build ios --buildConfig ~/.ssh/ios-build.json --release --staging",
     "build:ios:production": "./node_modules/.bin/ionic build ios --buildConfig ~/.ssh/ios-build.json --release --production",
     "test": "karma start karma.conf.js",

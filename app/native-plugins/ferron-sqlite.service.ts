@@ -47,6 +47,18 @@ const TABLES: Table[] = [
     ],
     isSyncable: true,
     name: 'quit_tips'
+  },
+  {
+    columns: [
+      ['uuid', 'VARCHAR(36) PRIMARY KEY'],
+      ['client_created_at', 'INTEGER'],
+      ['client_updated_at', 'INTEGER'],
+      ['is_dirty', 'INTEGER'],
+      ['identifier', 'VARCHAR(64)'],
+      ['title', 'VARCHAR(64)']
+    ],
+    isSyncable: true,
+    name: 'videos'
   }
 ];
 
@@ -133,7 +145,10 @@ export class FerronSqlite {
 
   /* istanbul ignore next: developer laziness */
   public fetchAll(table): Promise<any> {
-    return this.db.executeSql('SELECT * FROM ' + table, []).then(rs => {
+    let query = 'SELECT * FROM ' + table;
+
+    return this.db.executeSql(query, []).then(rs => {
+      console.log('query ran successfully: ' + query);
       let items = [];
 
       for (let i = 0; i < rs.rows.length; i++) {

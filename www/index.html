@@ -10,7 +10,8 @@
         content="default-src https://codepush.azurewebsites.net http://localhost:35729 'self' data: gap: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval';
                  connect-src https://feldspar-staging.cbits.northwestern.edu https://feldspar.cbits.northwestern.edu http://localhost:3000 http://localhost:8100 http://localhost:35729 ws://localhost:35729 'self';
                  style-src 'self' 'unsafe-inline';
-                 media-src *" />
+                 media-src *;
+                 frame-src 'self' https://player.vimeo.com gap://ready;" />
 
   <link ios-href="build/css/app.ios.css" rel="stylesheet">
   <link md-href="build/css/app.md.css" rel="stylesheet">
