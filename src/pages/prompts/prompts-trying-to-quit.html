@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-title>Calm. Cope. Quit.</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      <p>It sounds like you could use some help. Which of these options would you prefer?</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-item (click)="goLearnASkill()">
+      <h3>Use a Skill to help me cope</h3>
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+
+    <ion-item (click)="goQuitTip()">
+      <h3>Get a Quick Tip on how not to smoke</h3>
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button color="secondary" round large class="full-width tall-button">
+    <ion-icon name="logo-facebook"></ion-icon>
+    Connect with<br />
+    my Facebook<br />
+    support group
+  </button>
+</ion-content>

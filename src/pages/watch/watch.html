@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Watch</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list no-border>
+
+    <ion-list-header>
+      Videos
+    </ion-list-header>
+
+    <ion-item
+      *ngFor="let video of bundledVideos"
+      (click)="openBundledModal(video)">
+      <ion-label color="secondary">
+        {{ video.title }}
+      </ion-label>
+      <ion-icon color="secondary" name="videocam" item-left></ion-icon>
+    </ion-item>
+
+    <ion-item
+      *ngFor="let video of streamingVideos | async"
+      (click)="openStreamingModal(video)">
+      <ion-label [color]="onlineVideoClass()">
+        {{ video.title }}
+      </ion-label>
+      <ion-icon color="secondary" name="videocam" item-left></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

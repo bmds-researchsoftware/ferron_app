@@ -3,6 +3,7 @@
 
 coverage/
 node_modules/
+www/assets/
 www/build/
 platforms/
 plugins/
@@ -12,3 +13,4 @@ Thumbs.db
 npm-debug.log
 spec/screenshots/
 .vscode
+.tmp/

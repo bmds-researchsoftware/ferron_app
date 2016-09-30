@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-title>Home</ion-title>
+
+    <ion-buttons end>
+      <button ion-button large (click)="goAbout()">
+        <ion-icon name="information-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="home">
+  <h2>
+    Check in about how you're coping with quitting. This app will help you
+    cope with your urges and cravings in order to quit.
+  </h2>
+
+  <ion-list>
+    <ion-item (click)="goPrompts()">
+      <h3 color="secondary">{{ promptsLabel() }}</h3>
+      <ion-icon color="secondary" name="play" item-right></ion-icon>
+    </ion-item>
+
+    <ion-item (click)="goLearn()">
+      <h3>Learn to cope<br>
+      with urges to smoke</h3>
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+
+    <ion-item (click)="goCopingSkills()">
+      <h3>List of coping skills</h3>
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+
+    <ion-item (click)="goReminders()">
+      <h3>Set your reminders</h3>
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <button ion-button default large class="full-width" color="secondary">
+    <ion-icon name="logo-facebook"></ion-icon>
+    &nbsp;Join our Facebook support group
+  </button>
+</ion-footer>

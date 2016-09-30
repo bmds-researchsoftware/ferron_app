@@ -14,7 +14,6 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'node_modules/es6-shim/es6-shim.js',        // TypeError: undefined is not a constructor (evaluating 'new exports.Map()')
       'node_modules/reflect-metadata/Reflect.js', // 'Uncaught reflect-metadata shim is required when using class decorators'
       'node_modules/zone.js/dist/zone.js',        // Zone.js dependencies (Zone undefined)
       'node_modules/zone.js/dist/long-stack-trace-zone.js', // Missing: SyncTestZoneSpec
@@ -23,14 +22,14 @@ module.exports = function(config) {
       'node_modules/zone.js/dist/sync-test.js',
       'node_modules/zone.js/dist/proxy.js',          // Missing: SyncTestZoneSpec
       'node_modules/zone.js/dist/jasmine-patch.js',
-      'app/lib/md5.min.js',
-      'app/lib/Ajax.js',
-      'app/lib/AuthenticationTokensResource.js',
-      'app/lib/Payload.js',
-      'app/lib/Uuid.js',
-      'app/**/*.spec.ts',
+      'src/lib/md5.min.js',
+      'src/lib/Ajax.js',
+      'src/lib/AuthenticationTokensResource.js',
+      'src/lib/Payload.js',
+      'src/lib/Uuid.js',
+      'src/**/*.spec.ts',
       { pattern: 'node_modules/reflect-metadata/Reflect.js.map', included: false, served: true }, // 404 on the same
-      { pattern: 'www/build/**/*.html', included: false }
+      { pattern: 'www/**/*.html', included: false }
     ],
 
     // list of files to exclude
@@ -57,7 +56,8 @@ module.exports = function(config) {
             '**/native-plugins/**',
             '**/*.spec.ts',
             '**/*.d.ts'
-          ]
+          ],
+          // presets: ['es2015']
         }]
       ],
       plugin: [
@@ -105,7 +105,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_DEBUG,
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,

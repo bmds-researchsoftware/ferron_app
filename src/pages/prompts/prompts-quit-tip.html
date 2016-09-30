@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-title>Calm. Cope. Quit.</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      Quit Tips
+    </ion-card-header>
+
+    <ion-card-content>
+      {{ tipBody | async }}
+    </ion-card-content>
+
+    <ion-item>
+      <button ion-button clear large item-left>
+        <ion-icon name="thumbs-up"></ion-icon>
+      </button>
+
+      <button ion-button clear large item-right>
+        <ion-icon name="thumbs-down"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons>
+      <button ion-button color="secondary" (click)="reloadPage()">
+        Click for next tip
+      </button>
+    </ion-buttons>
+
+    <ion-buttons end>
+      <button ion-button (click)="goHome()">
+        Finish
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
