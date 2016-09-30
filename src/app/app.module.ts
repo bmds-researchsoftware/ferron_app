@@ -14,6 +14,7 @@ import { FerronAppVersion } from '../native-plugins/ferron-app-version.service';
 import { FerronDevice } from '../native-plugins/ferron-device.service';
 import { FerronNetwork } from '../native-plugins/ferron-network.service';
 import { FerronSqlite } from '../native-plugins/ferron-sqlite.service';
+import { NicotineReplacementPage } from '../pages/nicotine-replacement/nicotine-replacement.page';
 import { PromptsLearnASkillPage } from '../pages/prompts/prompts-learn-a-skill.page';
 import { PromptsPositiveFeedbackPage } from '../pages/prompts/prompts-positive-feedback.page';
 import { PromptsQuitTipPage } from '../pages/prompts/prompts-quit-tip.page';
@@ -34,6 +35,7 @@ import { HomePage } from '../pages/home/home';
     CopingSkillsPage,
     LearnPage,
     ListenPage,
+    NicotineReplacementPage,
     PromptsGetMotivatedTipPage,
     PromptsLearnASkillPage,
     PromptsPositiveFeedbackPage,
@@ -58,6 +60,7 @@ import { HomePage } from '../pages/home/home';
     CopingSkillsPage,
     LearnPage,
     ListenPage,
+    NicotineReplacementPage,
     PromptsGetMotivatedTipPage,
     PromptsLearnASkillPage,
     PromptsPositiveFeedbackPage,
