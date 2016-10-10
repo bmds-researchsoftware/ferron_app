@@ -1,7 +1,9 @@
 import { Constants } from '../../constants.service';
 import { FerronDevice } from '../../native-plugins/ferron-device.service';
+import { FerronLocalNotifications } from '../../native-plugins/ferron-local-notifications.service';
 import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
 import { HomePage } from '../../pages/home/home';
+import { PromptsPage } from '../../pages/prompts/prompts.page';
 import { Store } from '../../store/store.service';
 import { AuthenticationTokens } from './authentication-tokens.service';
 import { Configuration } from './configuration.model';
@@ -24,11 +26,17 @@ export class ConfigurationPage {
   constructor(public constants: Constants,
               public device: FerronDevice,
               public nav: NavController,
+              public notifications: FerronLocalNotifications,
               public platform: Platform,
               public sqlite: FerronSqlite,
               public store: Store,
               public tokens: AuthenticationTokens) {
     this.platform.ready().then(() => {
+      // When a participant enters the app via a notification, direct them to
+      // coping skills prompt.
+      this.notifications.on('click', _ => {
+        this.nav.push(PromptsPage);
+      })
       this.sqlite.initialize().then(() => {
         this.authorize();
       });

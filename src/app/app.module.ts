@@ -12,6 +12,7 @@ import { AuthenticationTokens } from '../pages/configuration/authentication-toke
 import { Constants } from '../constants.service';
 import { FerronAppVersion } from '../native-plugins/ferron-app-version.service';
 import { FerronDevice } from '../native-plugins/ferron-device.service';
+import { FerronLocalNotifications } from '../native-plugins/ferron-local-notifications.service';
 import { FerronNetwork } from '../native-plugins/ferron-network.service';
 import { FerronSqlite } from '../native-plugins/ferron-sqlite.service';
 import { NicotineReplacementPage } from '../pages/nicotine-replacement/nicotine-replacement.page';
@@ -77,6 +78,7 @@ import { HomePage } from '../pages/home/home';
     Constants,
     FerronAppVersion,
     FerronDevice,
+    FerronLocalNotifications,
     FerronNetwork,
     FerronSqlite,
     Store
