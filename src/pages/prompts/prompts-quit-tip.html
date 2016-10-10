@@ -15,12 +15,12 @@
     </ion-card-content>
 
     <ion-item>
-      <button ion-button clear large item-left>
-        <ion-icon name="thumbs-up"></ion-icon>
+      <button ion-button clear large item-left (click)="likeTip()">
+        <ion-icon name="thumbs-up" [color]="tipLiked === true ? 'secondary' : ''"></ion-icon>
       </button>
 
-      <button ion-button clear large item-right>
-        <ion-icon name="thumbs-down"></ion-icon>
+      <button ion-button clear large item-right (click)="dislikeTip()">
+        <ion-icon name="thumbs-down" [color]="tipLiked === false ? 'secondary' : ''"></ion-icon>
       </button>
     </ion-item>
   </ion-card>

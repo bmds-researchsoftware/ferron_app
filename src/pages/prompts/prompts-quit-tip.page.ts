@@ -18,6 +18,7 @@ function getRandom(list: [any]) {
 export class PromptsQuitTipPage {
   public tips: [{}];
   public tipBody: Promise<string> = null;
+  public tipLiked: boolean = null;
 
   public resolve: Function = null;
 
@@ -43,5 +44,13 @@ export class PromptsQuitTipPage {
 
   public goHome() {
     this.nav.push(HomePage);
+  }
+
+  public likeTip() {
+    this.tipLiked = true;
+  }
+
+  public dislikeTip() {
+    this.tipLiked = false;
   }
 }
