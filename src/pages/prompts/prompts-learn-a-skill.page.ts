@@ -1,4 +1,5 @@
 import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
+import { HomePage } from '../home/home';
 import { ListenPage } from '../listen/listen.page';
 import { WatchPage } from '../watch/watch.page';
 import { Component } from '@angular/core';
@@ -26,6 +27,12 @@ export class PromptsLearnASkillPage {
     const buttonLabel = 'Watch to learn';
     this.recordNav(this.pageName, buttonLabel);
     this.nav.push(WatchPage);
+  }
+
+  public goHome() {
+    const buttonLabel = 'Finish';
+    this.recordNav(this.pageName, buttonLabel);
+    this.nav.push(HomePage);
   }
 
   public recordNav(pageName: string, buttonLabel: string) {

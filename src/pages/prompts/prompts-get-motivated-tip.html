@@ -32,7 +32,13 @@
   <ion-footer no-border-top color="secondary">
     <ion-buttons class="toolbar-title">
       <button ion-button>
-        Click or swipe for next tip
+        Click for next tip
+      </button>
+    </ion-buttons>
+
+    <ion-buttons end>
+      <button ion-button (click)="goHome()">
+        Finish
       </button>
     </ion-buttons>
   </ion-footer>

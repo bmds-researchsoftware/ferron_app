@@ -1,3 +1,4 @@
+import { HomePage } from '../home/home';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
@@ -9,5 +10,9 @@ import { NavController } from 'ionic-angular';
 })
 export class PromptsGetMotivatedTipPage {
   constructor(public nav: NavController) {
+  }
+
+  public goHome() {
+    this.nav.push(HomePage);
   }
 }
