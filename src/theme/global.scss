@@ -92,6 +92,9 @@ button.button.tall-button {
 .wrap-text {
   white-space: normal;
 }
-.wrap-text {
-  white-space: normal;
+
+/* allow for iOS list of button styles */
+.list-ios > button.item-ios > .item-inner {
+  background-image: none !important;
+  padding-right: 0 !important;
 }

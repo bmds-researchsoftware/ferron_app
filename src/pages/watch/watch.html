@@ -13,22 +13,22 @@
       Videos
     </ion-list-header>
 
-    <ion-item
+    <button ion-item
       *ngFor="let video of bundledVideos"
-      (click)="openBundledModal(video)">
+      (click)="openBundledModal(video)" icon-left>
       <ion-label color="secondary">
         {{ video.title }}
       </ion-label>
       <ion-icon color="secondary" name="videocam" item-left></ion-icon>
-    </ion-item>
+    </button>
 
-    <ion-item
+    <button ion-item
       *ngFor="let video of streamingVideos | async"
-      (click)="openStreamingModal(video)">
+      (click)="openStreamingModal(video)" icon-left>
       <ion-label [color]="onlineVideoClass()">
         {{ video.title }}
       </ion-label>
       <ion-icon color="secondary" name="videocam" item-left></ion-icon>
-    </ion-item>
+    </button>
   </ion-list>
 </ion-content>

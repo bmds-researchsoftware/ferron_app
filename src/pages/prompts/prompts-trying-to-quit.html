@@ -12,15 +12,15 @@
   </ion-card>
 
   <ion-list>
-    <ion-item (click)="goLearnASkill()">
+    <button ion-item (click)="goLearnASkill()" icon-right>
       <h3 class="wrap-text">Use a Skill to help me cope</h3>
       <ion-icon name="arrow-forward" item-right></ion-icon>
-    </ion-item>
+    </button>
 
-    <ion-item (click)="goQuitTip()">
+    <button ion-item (click)="goQuitTip()" icon-right>
       <h3 class="wrap-text">Get a Quick Tip on how not to smoke</h3>
       <ion-icon name="arrow-forward" item-right></ion-icon>
-    </ion-item>
+    </button>
   </ion-list>
 
   <button ion-button color="secondary" round large class="full-width tall-button">

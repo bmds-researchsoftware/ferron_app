@@ -17,26 +17,26 @@
   </h2>
 
   <ion-list>
-    <ion-item (click)="goPrompts()">
+    <button ion-item (click)="goPrompts()" icon-right>
       <h3 color="secondary">{{ promptsLabel() }}</h3>
       <ion-icon color="secondary" name="play" item-right></ion-icon>
-    </ion-item>
+    </button>
 
-    <ion-item (click)="goLearn()">
+    <button ion-item (click)="goLearn()" icon-right>
       <h3>Learn to cope<br>
       with urges to smoke</h3>
       <ion-icon name="arrow-forward" item-right></ion-icon>
-    </ion-item>
+    </button>
 
-    <ion-item (click)="goCopingSkills()">
+    <button ion-item (click)="goCopingSkills()" icon-right>
       <h3>List of coping skills</h3>
       <ion-icon name="arrow-forward" item-right></ion-icon>
-    </ion-item>
+    </button>
 
-    <ion-item (click)="goReminders()">
+    <button ion-item (click)="goReminders()" icon-right>
       <h3>Set your reminders</h3>
       <ion-icon name="arrow-forward" item-right></ion-icon>
-    </ion-item>
+    </button>
   </ion-list>
 </ion-content>
 
