@@ -23,10 +23,10 @@
     </button>
   </ion-list>
 
-  <button ion-button color="secondary" round large class="full-width tall-button">
-    <ion-icon name="logo-facebook"></ion-icon>
-    Connect with<br />
-    my Facebook<br />
-    support group
-  </button>
+  <ion-list>
+    <button ion-item (click)="goFacebook()" color="secondary" icon-left>
+      <ion-icon name="logo-facebook" item-left></ion-icon>
+      <h3 class="wrap-text">Connect with my Facebook support group</h3>
+    </button>
+  </ion-list>
 </ion-content>

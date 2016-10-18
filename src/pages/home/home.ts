@@ -1,6 +1,7 @@
 import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
 import { AboutPage } from '../../pages/about/about';
 import { CopingSkillsPage } from '../../pages/coping-skills/coping-skills';
+import { Dialogs } from 'ionic-native';
 import { LearnPage } from '../../pages/learn/learn';
 import { PromptsPage } from '../../pages/prompts/prompts.page';
 import { RemindersPage } from '../../pages/reminders/reminders';
@@ -15,6 +16,7 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
   public pageName = 'Main page';
+  public FACEBOOK_GROUP_URL = 'https://www.facebook.com/groups/1190242697686088/';
 
   constructor(public nav: NavController, public sqlite: FerronSqlite) {
   }
@@ -46,6 +48,18 @@ export class HomePage {
     const buttonLabel = 'Set your reminders';
     this.nav.push(RemindersPage);
     this.recordNav(this.pageName, buttonLabel);
+  }
+
+  public goFacebook() {
+    Dialogs.confirm(
+      "Do you want to open Facebook?",
+      null,
+      ['Yes', 'No']
+    ).then(buttonNumber => {
+      if (buttonNumber === 1) {
+        window.open(this.FACEBOOK_GROUP_URL, '_system');
+      }
+    });
   }
 
   public promptsLabel(): string {
