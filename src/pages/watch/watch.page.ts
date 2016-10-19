@@ -55,7 +55,7 @@ export class WatchPage {
 
 // A modal that displays the selected bundled video.
 @Component({
-  templateUrl: 'streaming-video.html'
+  templateUrl: 'bundled-video.html'
 })
 export class BundledVideoPage {
   constructor(public domSanitizer: DomSanitizer,
