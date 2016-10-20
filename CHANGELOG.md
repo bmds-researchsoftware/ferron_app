@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.0 - 2016-10-20
+
+* add README with release instructions
+* capture and synchronize video follow-up responses (#33)
+* display list of NRT videos (#32)
+* open Facebook link in system browser window (#31)
+* update ios build rules for staging and production
+* update icon to umbrella
+
 ## 0.3.0 - 2016-10-10
 
 * embiggen quit tip thumbs and change color (#30)
