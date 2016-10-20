@@ -71,6 +71,20 @@ const TABLES: Table[] = [
     ],
     isSyncable: true,
     name: 'videos'
+  },
+  {
+    columns: [
+      ['uuid', 'VARCHAR(36) PRIMARY KEY'],
+      ['client_created_at', 'INTEGER'],
+      ['client_updated_at', 'INTEGER'],
+      ['is_dirty', 'INTEGER'],
+      ['did_try_skill', 'INTEGER'],
+      ['did_like_video', 'INTEGER'],
+      ['confidence_in_coping', 'INTEGER'],
+      ['video_title', 'VARCHAR(64)']
+    ],
+    isSyncable: true,
+    name: 'video_follow_up_responses'
   }
 ];
 

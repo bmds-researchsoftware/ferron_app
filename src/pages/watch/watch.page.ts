@@ -1,6 +1,7 @@
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 import { FerronNetwork } from '../../native-plugins/ferron-network.service';
 import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
+import { VideoFollowUpPage } from './video-follow-up.page';
 import { Component } from '@angular/core';
 import { ModalController, NavParams, ViewController } from 'ionic-angular';
 
@@ -31,8 +32,17 @@ export class WatchPage {
   }
 
   public openBundledModal(video: { url: string, title: string }) {
-    let modal = this.modalController.create(BundledVideoPage, video);
-    modal.present();
+    let videoModal = this.modalController.create(BundledVideoPage, video);
+
+    videoModal.onDidDismiss(() => {
+      let followUpModal = this.modalController.create(VideoFollowUpPage, video);
+
+      followUpModal.onDidDismiss(responses => {
+        this.sqlite.persist('video_follow_up_responses', responses);
+      });
+      followUpModal.present();
+    });
+    videoModal.present();
   }
 
   public openStreamingModal(video: { identifier: string, title: string }) {

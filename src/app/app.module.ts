@@ -23,6 +23,7 @@ import { PromptsTryingToQuitPage } from '../pages/prompts/prompts-trying-to-quit
 import { PromptsPage } from '../pages/prompts/prompts.page';
 import { ReasonsToQuitPage } from '../pages/reasons-to-quit/reasons-to-quit';
 import { RemindersPage } from '../pages/reminders/reminders';
+import { VideoFollowUpPage } from '../pages/watch/video-follow-up.page';
 import { BundledVideoPage, StreamingVideoPage, WatchPage } from '../pages/watch/watch.page';
 import { HomePage } from '../pages/home/home';
 
@@ -46,6 +47,7 @@ import { HomePage } from '../pages/home/home';
     ReasonsToQuitPage,
     RemindersPage,
     StreamingVideoPage,
+    VideoFollowUpPage,
     WatchPage
   ],
   imports: [
@@ -71,6 +73,7 @@ import { HomePage } from '../pages/home/home';
     ReasonsToQuitPage,
     RemindersPage,
     StreamingVideoPage,
+    VideoFollowUpPage,
     WatchPage
   ],
   providers: [
