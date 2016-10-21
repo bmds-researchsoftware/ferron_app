@@ -6,5 +6,20 @@
 
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <ion-list no-border>
+
+    <ion-list-header>
+      Audio Files
+    </ion-list-header>
+
+    <button ion-item
+      *ngFor="let audio of bundledAudioFiles"
+      (click)="openBundledModal(audio)" icon-left>
+      <ion-label color="secondary">
+        {{ audio.title }}
+      </ion-label>
+      <ion-icon color="secondary" name="mic" item-left></ion-icon>
+    </button>
+  </ion-list>
 </ion-content>

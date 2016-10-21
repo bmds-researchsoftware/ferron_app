@@ -5,6 +5,20 @@ const TABLES: Table[] = [
   {
     columns: [
       ['uuid', 'VARCHAR(36) PRIMARY KEY'],
+      ['client_created_at', 'INTEGER'],
+      ['client_updated_at', 'INTEGER'],
+      ['is_dirty', 'INTEGER'],
+      ['did_try_skill', 'INTEGER'],
+      ['did_like_audio', 'INTEGER'],
+      ['confidence_in_coping', 'INTEGER'],
+      ['audio_title', 'VARCHAR(64)']
+    ],
+    isSyncable: true,
+    name: 'audio_follow_up_responses'
+  },
+  {
+    columns: [
+      ['uuid', 'VARCHAR(36) PRIMARY KEY'],
       ['value', 'VARCHAR(64)']
     ],
     isSyncable: false,

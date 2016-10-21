@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ audioTitle() }} Follow-up
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="shouldShowDidTrySkill()">
+    <ion-card-header>
+      <h2 class="wrap-text">
+        While you were listening, did you try doing the skill?
+      </h2>
+    </ion-card-header>
+
+    <ion-item>
+      <button ion-button clear large item-left (click)="didTrySkill()">
+        <ion-icon name="thumbs-up" [color]="skillWasTried === true ? 'secondary' : ''"></ion-icon>
+      </button>
+
+      <button ion-button clear large item-right (click)="didNotTrySkill()">
+        <ion-icon name="thumbs-down" [color]="skillWasTried === false ? 'secondary' : ''"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-card>
+
+  <ion-card *ngIf="shouldShowDidLikeAudio()">
+    <ion-card-header>
+      <h2 class="wrap-text">
+        Did you like the audio?
+      </h2>
+    </ion-card-header>
+
+    <ion-item>
+      <button ion-button clear large item-left (click)="didLikeAudio()">
+        <ion-icon name="thumbs-up" [color]="audioWasLiked === true ? 'secondary' : ''"></ion-icon>
+      </button>
+
+      <button ion-button clear large item-right (click)="didNotLikeAudio()">
+        <ion-icon name="thumbs-down" [color]="audioWasLiked === false ? 'secondary' : ''"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-card>
+
+  <ion-card *ngIf="shouldShowConfidenceInCoping()">
+    <ion-card-header>
+      <h2 class="wrap-text">
+        After listening and practicing, how confident are you that you can cope
+        with an urge to smoke?
+        <br /><br />
+        1 is the least
+        <br />
+        5 is the most
+      </h2>
+    </ion-card-header>
+
+    <ion-item>
+      <ion-range min="1" max="5" step="1" snaps="true" [(ngModel)]="confidenceInCoping" color="primary">
+        <span range-left color="primary">1</span>
+        <span range-right color="primary">5</span>
+      </ion-range>
+    </ion-item>
+  </ion-card>
+
+  <button ion-button full color="secondary" (click)="dismiss()" *ngIf="shouldShowConfidenceInCoping()">
+    Save
+  </button>
+</ion-content>

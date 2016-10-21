@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { FerronApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
+import { AudioFollowUpPage } from '../pages/listen/audio-follow-up.page';
 import { ConfigurationPage } from '../pages/configuration/configuration.page';
 import { CopingSkillsPage } from '../pages/coping-skills/coping-skills';
 import { LearnPage } from '../pages/learn/learn';
-import { ListenPage } from '../pages/listen/listen.page';
+import { BundledAudioPage, ListenPage } from '../pages/listen/listen.page';
 import { PromptsGetMotivatedTipPage } from '../pages/prompts/prompts-get-motivated-tip.page';
 import { Store } from '../store/store.service';
 import { AuthenticationTokens } from '../pages/configuration/authentication-tokens.service';
@@ -31,6 +32,8 @@ import { HomePage } from '../pages/home/home';
   declarations: [
     FerronApp,
     AboutPage,
+    AudioFollowUpPage,
+    BundledAudioPage,
     BundledVideoPage,
     ConfigurationPage,
     HomePage,
@@ -57,6 +60,8 @@ import { HomePage } from '../pages/home/home';
   entryComponents: [
     FerronApp,
     AboutPage,
+    AudioFollowUpPage,
+    BundledAudioPage,
     BundledVideoPage,
     ConfigurationPage,
     HomePage,
