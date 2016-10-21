@@ -1,4 +1,4 @@
-# Calm. Cope. Quit.
+# Calm. Cope. Quit. mobile app
 
 An app to promote smoking cessation.
 
@@ -11,6 +11,8 @@ Integrating HockeySDK for analytics and crash reporting is currently a manual
 process. Please follow the steps provided on the HockeyApp pages. You can find
 them by clicking on the wrench icon next to the App ID on the HockeyApp project
 pages. Make sure you use the correct App ID for each stage and/or platform.
+
+For iOS, the easiest way to set up the HockeyApp SDK is via the Mac app wizard.
 
 ### Android
 

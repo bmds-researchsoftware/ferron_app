@@ -22,6 +22,7 @@ package edu.northwestern.cbits.calmcopequit;
 import android.os.Bundle;
 import org.apache.cordova.*;
 import net.hockeyapp.android.CrashManager;
+import net.hockeyapp.android.metrics.MetricsManager;
 
 public class MainActivity extends CordovaActivity
 {
@@ -31,6 +32,7 @@ public class MainActivity extends CordovaActivity
         super.onCreate(savedInstanceState);
         // Set by <content src="index.html" /> in config.xml
         loadUrl(launchUrl);
+        MetricsManager.register(this, getApplication());
     }
 
     @Override
