@@ -17,6 +17,7 @@ import { FerronLocalNotifications } from '../native-plugins/ferron-local-notific
 import { FerronNetwork } from '../native-plugins/ferron-network.service';
 import { FerronSqlite } from '../native-plugins/ferron-sqlite.service';
 import { NicotineReplacementPage } from '../pages/nicotine-replacement/nicotine-replacement.page';
+import { OneStepAtATimePage } from '../pages/one-step-at-a-time/one-step-at-a-time.page';
 import { PromptsLearnASkillPage } from '../pages/prompts/prompts-learn-a-skill.page';
 import { PromptsPositiveFeedbackPage } from '../pages/prompts/prompts-positive-feedback.page';
 import { PromptsQuitTipPage } from '../pages/prompts/prompts-quit-tip.page';
@@ -41,6 +42,7 @@ import { HomePage } from '../pages/home/home';
     LearnPage,
     ListenPage,
     NicotineReplacementPage,
+    OneStepAtATimePage,
     PromptsGetMotivatedTipPage,
     PromptsLearnASkillPage,
     PromptsPositiveFeedbackPage,
@@ -69,6 +71,7 @@ import { HomePage } from '../pages/home/home';
     LearnPage,
     ListenPage,
     NicotineReplacementPage,
+    OneStepAtATimePage,
     PromptsGetMotivatedTipPage,
     PromptsLearnASkillPage,
     PromptsPositiveFeedbackPage,

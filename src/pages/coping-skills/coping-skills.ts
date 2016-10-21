@@ -1,6 +1,7 @@
 import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
 import { ListenPage } from '../listen/listen.page';
 import { NicotineReplacementPage } from '../nicotine-replacement/nicotine-replacement.page';
+import { OneStepAtATimePage } from '../one-step-at-a-time/one-step-at-a-time.page';
 import { PromptsQuitTipPage } from '../../pages/prompts/prompts-quit-tip.page';
 import { ReasonsToQuitPage } from '../../pages/reasons-to-quit/reasons-to-quit';
 import { WatchPage } from '../watch/watch.page';
@@ -44,6 +45,12 @@ export class CopingSkillsPage {
     const buttonLabel = 'Use my Nicotine Replacement';
     this.recordNav(this.pageName, buttonLabel);
     this.nav.push(NicotineReplacementPage);
+  }
+
+  public goOneStepAtATime() {
+    const buttonLabel = 'One Step at a Time';
+    this.recordNav(this.pageName, buttonLabel);
+    this.nav.push(OneStepAtATimePage);
   }
 
   public recordNav(pageName: string, buttonLabel: string) {
