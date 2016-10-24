@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0 - 2016-10-24
+
+* update readme; fix Android HA metrics
+* add One Step at a Time section (#36)
+* display audio; capture and sync responses (#35)
+* add example Android HockeyApp config; fix video (#34)
+
 ## 0.4.0 - 2016-10-20
 
 * add README with release instructions
