@@ -68,6 +68,18 @@ const TABLES: Table[] = [
       ['client_created_at', 'INTEGER'],
       ['client_updated_at', 'INTEGER'],
       ['is_dirty', 'INTEGER'],
+      ['did_like_tip', 'INTEGER'],
+      ['quit_tip_uuid', 'VARCHAR(36)']
+    ],
+    isSyncable: true,
+    name: 'quit_tip_follow_up_responses'
+  },
+  {
+    columns: [
+      ['uuid', 'VARCHAR(36) PRIMARY KEY'],
+      ['client_created_at', 'INTEGER'],
+      ['client_updated_at', 'INTEGER'],
+      ['is_dirty', 'INTEGER'],
       ['hour', 'VARCHAR(2)'],
       ['minute', 'VARCHAR(2)']
     ],

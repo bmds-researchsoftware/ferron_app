@@ -3,7 +3,7 @@ import { HomePage } from '../home/home';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-function getRandom(list: [any]) {
+function getRandom(list: any[]) {
   let index = Math.floor(Math.random() * list.length);
 
   return list[index];
@@ -16,8 +16,9 @@ function getRandom(list: [any]) {
   templateUrl: 'prompts-quit-tip.html'
 })
 export class PromptsQuitTipPage {
-  public tips: [{}];
-  public tipBody: Promise<string> = null;
+  public tips: any[] = [];
+  public tipBody: string = null;
+  public tipUuid: string = null;
   public tipLiked: boolean = null;
 
   public resolve: Function = null;
@@ -29,12 +30,14 @@ export class PromptsQuitTipPage {
   }
 
   public refreshTips() {
+    if (this.tips.length > 0) {
+      this.setTip();
+      return;
+    }
+
     this.sqlite.fetchAll('quit_tips').then(tips => {
       this.tips = tips;
-      this.resolve(getRandom(tips).body);
-    });
-    this.tipBody = new Promise<string>((resolve, reject) => {
-      this.resolve = resolve;
+      this.setTip();
     });
   }
 
@@ -48,9 +51,27 @@ export class PromptsQuitTipPage {
 
   public likeTip() {
     this.tipLiked = true;
+    this.persistResponse();
   }
 
   public dislikeTip() {
     this.tipLiked = false;
+    this.persistResponse();
+  }
+
+  private setTip() {
+    let tip = getRandom(this.tips);
+    this.tipBody = tip.body;
+    this.tipUuid = tip.uuid;
+  }
+
+  private persistResponse() {
+    this.sqlite.persist('quit_tip_follow_up_responses', {
+      quit_tip_uuid: this.tipUuid,
+      did_like_tip: this.tipLiked
+    }).then(() => {
+      this.tipLiked = null;
+      this.refreshTips();
+    });
   }
 }
