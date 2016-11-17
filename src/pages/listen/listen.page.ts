@@ -11,9 +11,77 @@ export class ListenPage {
   public streamingAudioFiles: Promise<Array<any>>;
   public bundledAudioFiles = [
     {
-      title: 'Povo Que Cas Descalo',
-      url: 'assets/audio_files/Dead_Combo_-_01_-_Povo_Que_Cas_Descalo.mp3'
-    }
+      title: 'Urge Surfing',
+      url: 'assets/audio_files/01_Urge_Surfing.mp3'
+    },
+    {
+      title: 'Loving Kindness',
+      url: 'assets/audio_files/02_Loving_Kindness.mp3'
+    },
+    {
+      title: 'The Beauty of Nature',
+      url: 'assets/audio_files/03_The_Beauty_of_Nature.mp3'
+    },
+    {
+      title: 'Daily Tasks',
+      url: 'assets/audio_files/04_Daily_Tasks.mp3'
+    },
+    {
+      title: 'Opening Your Ears to Sound',
+      url: 'assets/audio_files/05_Opening_Your_Ears_to_Sound.mp3'
+    },
+    {
+      title: 'Mindful Immersion',
+      url: 'assets/audio_files/06_Mindful_Immersion.mp3'
+    },
+    {
+      title: 'Awakening Your Senses',
+      url: 'assets/audio_files/07_Awakening_Your_Senses.mp3'
+    },
+    {
+      title: 'Seated Walking',
+      url: 'assets/audio_files/08_Seated_Walking.mp3'
+    },
+    {
+      title: 'The Four Elements',
+      url: 'assets/audio_files/09_The_Four_Elements.mp3'
+    },
+    {
+      title: 'Breathing in, Breathing out',
+      url: 'assets/audio_files/10_Breathing_in_Breathing_out.mp3'
+    },
+    {
+      title: 'Relaxed Deep Breathing',
+      url: 'assets/audio_files/11_Relaxed_Deep_Breathing.mp3'
+    },
+    {
+      title: 'The Whoosh Breath',
+      url: 'assets/audio_files/12_The_Whoosh_Breath.mp3'
+    },
+    {
+      title: 'Observing Our Cravings',
+      url: 'assets/audio_files/13_Observing_Our_Cravings.mp3'
+    },
+    {
+      title: 'The Cycle of Addiction',
+      url: 'assets/audio_files/14_The_Cycle_of_Addiction.mp3'
+    },
+    {
+      title: 'Walking',
+      url: 'assets/audio_files/15_Walking.mp3'
+    },
+    {
+      title: 'Gratitude',
+      url: 'assets/audio_files/16_Gratitude.mp3'
+    },
+    {
+      title: 'Mindful Sensing',
+      url: 'assets/audio_files/17_Mindful_Sensing.mp3'
+    },
+    {
+      title: 'Body Scan',
+      url: 'assets/audio_files/18_Body_Scan.mp3'
+    },
   ];
 
   constructor(public modalController: ModalController,
