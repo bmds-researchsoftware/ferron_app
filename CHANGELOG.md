@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.0 - 2016-11-18
+
+* update icon to alpha png (#43)
+* display and capture responses to motivational tips (#42)
+* capture and sync quit tip feedback (#41)
+* update list of bundled audio
+
 ## 0.5.0 - 2016-10-24
 
 * update readme; fix Android HA metrics
