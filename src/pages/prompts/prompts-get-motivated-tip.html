@@ -11,27 +11,25 @@
     </ion-card-header>
 
     <ion-card-content>
-      Not feeling ready to quit? Try reviewing your reasons for wanting to quit.
-      Remembering why you want to quit in the first place can help you stick to
-      your guns when making a quit attempt.
+      {{ tipBody }}
     </ion-card-content>
 
     <ion-item>
-      <button ion-button clear large item-left>
-        <ion-icon name="thumbs-up"></ion-icon>
+      <button ion-button clear large item-left (click)="likeTip()">
+        <ion-icon name="thumbs-up" [color]="tipLiked === true ? 'secondary' : ''"></ion-icon>
       </button>
 
-      <button ion-button clear large item-right>
-        <ion-icon name="thumbs-down"></ion-icon>
+      <button ion-button clear large item-right (click)="dislikeTip()">
+        <ion-icon name="thumbs-down" [color]="tipLiked === false ? 'secondary' : ''"></ion-icon>
       </button>
     </ion-item>
   </ion-card>
 </ion-content>
 
 <ion-footer>
-  <ion-footer no-border-top color="secondary">
-    <ion-buttons class="toolbar-title">
-      <button ion-button>
+  <ion-toolbar>
+    <ion-buttons>
+      <button ion-button color="secondary" (click)="reloadPage()">
         Click for next tip
       </button>
     </ion-buttons>
@@ -41,5 +39,5 @@
         Finish
       </button>
     </ion-buttons>
-  </ion-footer>
+  </ion-toolbar>
 </ion-footer>

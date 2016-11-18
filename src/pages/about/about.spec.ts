@@ -3,6 +3,7 @@ import { FerronAppVersion } from '../../native-plugins/ferron-app-version.servic
 import { FerronDevice } from '../../native-plugins/ferron-device.service';
 import { AboutPage } from '../../pages/about/about';
 import { TestBed, inject } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('AboutPage', () => {
   let aboutPage: AboutPage;
@@ -15,11 +16,12 @@ describe('AboutPage', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AboutPage],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
         { provide: Constants, useValue: stubConstants },
         { provide: FerronAppVersion, useValue: stubAppVersion },
-        { provide: FerronDevice, useValue: stubDevice }
+        { provide: FerronDevice, useValue: stubDevice },
+        AboutPage
       ]
     });
   });

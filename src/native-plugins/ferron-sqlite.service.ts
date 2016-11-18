@@ -60,6 +60,29 @@ const TABLES: Table[] = [
       ['body', 'VARCHAR(1024)']
     ],
     isSyncable: true,
+    name: 'get_motivated_tips'
+  },
+  {
+    columns: [
+      ['uuid', 'VARCHAR(36) PRIMARY KEY'],
+      ['client_created_at', 'INTEGER'],
+      ['client_updated_at', 'INTEGER'],
+      ['is_dirty', 'INTEGER'],
+      ['did_like_tip', 'INTEGER'],
+      ['get_motivated_tip_uuid', 'VARCHAR(36)']
+    ],
+    isSyncable: true,
+    name: 'get_motivated_tip_follow_up_responses'
+  },
+  {
+    columns: [
+      ['uuid', 'VARCHAR(36) PRIMARY KEY'],
+      ['client_created_at', 'INTEGER'],
+      ['client_updated_at', 'INTEGER'],
+      ['is_dirty', 'INTEGER'],
+      ['body', 'VARCHAR(1024)']
+    ],
+    isSyncable: true,
     name: 'quit_tips'
   },
   {

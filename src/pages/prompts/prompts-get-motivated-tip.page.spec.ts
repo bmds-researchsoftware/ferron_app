@@ -1,10 +1,10 @@
 import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
-import { PromptsQuitTipPage } from './prompts-quit-tip.page';
+import { PromptsGetMotivatedTipPage } from './prompts-get-motivated-tip.page';
 import { TestBed, inject } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-describe('PromptsQuitTipPage', () => {
+describe('PromptsGetMotivatedTipPage', () => {
   let stubNavController = { push: jasmine.createSpy('push') };
   let stubSqlite = {
     initialize() { return Promise.resolve(); },
@@ -17,16 +17,16 @@ describe('PromptsQuitTipPage', () => {
       providers: [
         { provide: NavController, useValue: stubNavController },
         { provide: FerronSqlite, useValue: stubSqlite },
-        PromptsQuitTipPage
+        PromptsGetMotivatedTipPage
       ]
     });
   });
 
   describe('#reloadPage', () => {
-    it('reloads the PromptsQuitTipPage', inject([PromptsQuitTipPage], quitTipPage => {
-      quitTipPage.reloadPage();
+    it('reloads the PromptsGetMotivatedTipPage', inject([PromptsGetMotivatedTipPage], get_motivatedTipPage => {
+      get_motivatedTipPage.reloadPage();
 
-      expect(stubNavController.push).toHaveBeenCalledWith(PromptsQuitTipPage);
+      expect(stubNavController.push).toHaveBeenCalledWith(PromptsGetMotivatedTipPage);
     }));
   });
 });
