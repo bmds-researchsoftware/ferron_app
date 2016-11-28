@@ -12,4 +12,5 @@ let server = CalmCopeQuit.SERVER_URL;
 export class Constants {
   public appStage: string = stage;
   public serverUrl: string = server;
+  public facebookGroupUrl = 'https://www.facebook.com/groups/143743129437039/';
 }

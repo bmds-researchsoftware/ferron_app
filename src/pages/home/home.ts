@@ -7,6 +7,7 @@ import { PromptsPage } from '../../pages/prompts/prompts.page';
 import { RemindersPage } from '../../pages/reminders/reminders';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Constants } from '../../constants.service';
 
 /*
  * The primary landing page of the application.
@@ -16,9 +17,10 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
   public pageName = 'Main page';
-  public FACEBOOK_GROUP_URL = 'https://www.facebook.com/groups/1190242697686088/';
 
-  constructor(public nav: NavController, public sqlite: FerronSqlite) {
+  constructor(public nav: NavController,
+              public sqlite: FerronSqlite,
+              public constants: Constants) {
   }
 
   public goAbout() {
@@ -57,7 +59,7 @@ export class HomePage {
       ['Yes', 'No']
     ).then(buttonNumber => {
       if (buttonNumber === 1) {
-        window.open(this.FACEBOOK_GROUP_URL, '_system');
+        window.open(this.constants.facebookGroupUrl, '_system');
       }
     });
   }

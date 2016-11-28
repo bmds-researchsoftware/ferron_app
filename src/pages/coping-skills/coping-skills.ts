@@ -7,6 +7,8 @@ import { ReasonsToQuitPage } from '../../pages/reasons-to-quit/reasons-to-quit';
 import { WatchPage } from '../watch/watch.page';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Dialogs } from 'ionic-native';
+import { Constants } from '../../constants.service';
 
 @Component({
   templateUrl: 'coping-skills.html',
@@ -14,7 +16,9 @@ import { NavController } from 'ionic-angular';
 export class CopingSkillsPage {
   public pageName = 'Coping skills';
 
-  constructor(public nav: NavController, public sqlite: FerronSqlite) {
+  constructor(public nav: NavController,
+              public sqlite: FerronSqlite,
+              public constants: Constants) {
   }
 
   public goReasonsToQuit() {
@@ -59,6 +63,18 @@ export class CopingSkillsPage {
         button_label: buttonLabel,
         current_page: pageName
       });
+    });
+  }
+
+  public goFacebook() {
+    Dialogs.confirm(
+      "Do you want to open Facebook?",
+      null,
+      ['Yes', 'No']
+    ).then(buttonNumber => {
+      if (buttonNumber === 1) {
+        window.open(this.constants.facebookGroupUrl, '_system');
+      }
     });
   }
 }

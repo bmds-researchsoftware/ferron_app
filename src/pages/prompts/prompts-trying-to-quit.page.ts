@@ -3,6 +3,7 @@ import { PromptsQuitTipPage } from './prompts-quit-tip.page';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Dialogs } from 'ionic-native';
+import { Constants } from '../../constants.service';
 
 /*
  * The page for coping skills prompts trying to quit.
@@ -11,9 +12,7 @@ import { Dialogs } from 'ionic-native';
   templateUrl: 'prompts-trying-to-quit.html'
 })
 export class PromptsTryingToQuitPage {
-  public FACEBOOK_GROUP_URL = 'https://www.facebook.com/groups/1190242697686088/';
-
-  constructor(public nav: NavController) {
+  constructor(public nav: NavController, public constants: Constants) {
   }
 
   public goLearnASkill() {
@@ -31,7 +30,7 @@ export class PromptsTryingToQuitPage {
       ['Yes', 'No']
     ).then(buttonNumber => {
       if (buttonNumber === 1) {
-        window.open(this.FACEBOOK_GROUP_URL, '_system');
+        window.open(this.constants.facebookGroupUrl, '_system');
       }
     });
   }
