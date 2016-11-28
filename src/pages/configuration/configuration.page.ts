@@ -22,6 +22,7 @@ let TOKENS_RESOURCE_PATH = '/token_auth/api/authentication_tokens';
 })
 export class ConfigurationPage {
   public model = new Configuration('');
+  public appStage: string;
 
   constructor(public constants: Constants,
               public device: FerronDevice,
@@ -40,6 +41,7 @@ export class ConfigurationPage {
       this.sqlite.initialize().then(() => {
         this.authorize();
       });
+      this.appStage = constants.appStage;
     });
   }
 

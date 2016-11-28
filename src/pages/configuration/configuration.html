@@ -18,7 +18,7 @@
     Continue
   </button>
 
-  <button ion-button (click)="goHome()">
+  <button ion-button (click)="goHome()" *ngIf="appStage === 'development'">
     Go Home
   </button>
 </ion-content>
