@@ -115,6 +115,17 @@ const TABLES: Table[] = [
       ['client_created_at', 'INTEGER'],
       ['client_updated_at', 'INTEGER'],
       ['is_dirty', 'INTEGER'],
+      ['reason_to_quit_title', 'VARCHAR(64)']
+    ],
+    isSyncable: true,
+    name: 'reason_to_quit_responses'
+  },
+  {
+    columns: [
+      ['uuid', 'VARCHAR(36) PRIMARY KEY'],
+      ['client_created_at', 'INTEGER'],
+      ['client_updated_at', 'INTEGER'],
+      ['is_dirty', 'INTEGER'],
       ['identifier', 'VARCHAR(64)'],
       ['title', 'VARCHAR(64)']
     ],

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
 
 @Component({
   templateUrl: 'reasons-to-quit.html',
@@ -95,10 +96,20 @@ export class ReasonsToQuitPage {
       checked: false
     }
   ]
+  public sortedReasons: Promise<{}>;
+  public RESPONSES_TABLE = 'reason_to_quit_responses';
+  public saveEnabled = false;
 
   private MAX_SELECTIONS = 3;
 
-  constructor(public nav: NavController) {}
+  constructor(
+    public nav: NavController,
+    public sqlite: FerronSqlite
+  ) {
+    this.sqlite.initialize().then(() => {
+      this.refreshSelections();
+    })
+  }
 
   public isUpdateable(isChecked) {
     if (isChecked === true) {
@@ -108,5 +119,42 @@ export class ReasonsToQuitPage {
     return this.reasons.filter(reason => {
       return reason.checked === true;
     }).length < this.MAX_SELECTIONS;
+  }
+
+  public isSaved(isChecked) {
+    if (this.saveEnabled === true) {
+      return false;
+    }
+
+    return isChecked === true;
+  }
+
+  public refreshSelections() {
+    this.sortedReasons = this.sqlite.fetchAll(this.RESPONSES_TABLE).then(responses => {
+      if (responses.length === 0) {
+        this.saveEnabled = true;
+      }
+
+      responses.forEach(selection => {
+        let reasonIndex = this.reasons.findIndex(reason => {
+          return reason.text === selection.reason_to_quit_title;
+        });
+        this.reasons[reasonIndex].checked = true;
+      });
+
+      return this.reasons;
+    });
+  }
+
+  public saveResponses() {
+    this.saveEnabled = false;
+    this.reasons.forEach(reason => {
+      if (reason.checked === true) {
+        this.sqlite.persist(this.RESPONSES_TABLE, {
+          reason_to_quit_title: reason.text
+        });
+      }
+    });
+    this.refreshSelections();
   }
 }
