@@ -14,6 +14,7 @@ export class RemindersPage {
   public reminderTimestamp: string;
   public APP_TITLE = 'Calm. Cope. Quit.';
   public REMINDER_TEXT = 'Check-in and do your coping skill';
+  public ICON = 'res://../drawable-hdpi-v4/icon.png';
 
   private _isDisabled = true;
   private NOTIFICATION_ID = 1;
@@ -66,7 +67,8 @@ export class RemindersPage {
       title: this.APP_TITLE,
       text: this.REMINDER_TEXT,
       every: 'day',
-      at: nextTime.valueOf()
+      at: nextTime.valueOf(),
+      icon: this.ICON
     });
 
     this.sqlite.initialize().then(() => {

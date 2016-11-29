@@ -7,7 +7,14 @@ import { LocalNotifications } from 'ionic-native';
 @Injectable()
 export class FerronLocalNotifications {
   public schedule(
-    options: { id: number, title: string, text: string, every: string, at: number }
+    options: {
+      id: number,
+      title: string,
+      text: string,
+      every: string,
+      at: number,
+      icon: string
+    }
   ) {
     LocalNotifications.schedule(options);
   }
