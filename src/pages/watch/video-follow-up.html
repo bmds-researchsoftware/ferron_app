@@ -56,14 +56,14 @@
     </ion-card-header>
 
     <ion-item>
-      <ion-range min="1" max="5" step="1" snaps="true" [(ngModel)]="confidenceInCoping" color="primary">
-        <span range-left color="primary">1</span>
-        <span range-right color="primary">5</span>
+      <ion-range min="1" max="5" step="1" snaps="true" [(ngModel)]="confidenceInCoping" ion-text color="primary">
+        <span range-left ion-text color="primary">1</span>
+        <span range-right ion-text color="primary">5</span>
       </ion-range>
     </ion-item>
   </ion-card>
 
-  <button ion-button full color="secondary" (click)="dismiss()" *ngIf="shouldShowConfidenceInCoping()">
+  <button ion-button full ion-text color="secondary" (click)="dismiss()" *ngIf="shouldShowConfidenceInCoping()">
     Save
   </button>
 </ion-content>

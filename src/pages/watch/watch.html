@@ -16,10 +16,10 @@
     <button ion-item
       *ngFor="let video of bundledVideos"
       (click)="openBundledModal(video)" icon-left>
-      <ion-label color="secondary">
+      <ion-label ion-text color="secondary">
         {{ video.title }}
       </ion-label>
-      <ion-icon color="secondary" name="videocam" item-left></ion-icon>
+      <ion-icon ion-text color="secondary" name="videocam" item-left></ion-icon>
     </button>
 
     <button ion-item
@@ -28,7 +28,7 @@
       <ion-label [color]="onlineVideoClass()">
         {{ video.title }}
       </ion-label>
-      <ion-icon color="secondary" name="videocam" item-left></ion-icon>
+      <ion-icon ion-text color="secondary" name="videocam" item-left></ion-icon>
     </button>
   </ion-list>
 </ion-content>

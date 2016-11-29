@@ -5,13 +5,9 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <ion-card-content>
-      <p>How would you like to learn this skill?</p>
+  <h2>How would you like to learn this skill?</h2>
 
-      <p>Would you like to
-    </ion-card-content>
-  </ion-card>
+  <h2>Would you like to</h2>
 
   <ion-list>
     <button ion-item (click)="goListen()" icon-right>
@@ -28,8 +24,8 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-buttons>
-      <button ion-button (click)="goHome()">
+    <ion-buttons end>
+      <button ion-text color="secondary" ion-button (click)="goHome()">
         Finish
       </button>
     </ion-buttons>

@@ -5,11 +5,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <ion-card-content>
-      <p>It sounds like you could use some help. Which of these options would you prefer?</p>
-    </ion-card-content>
-  </ion-card>
+  <h2>It sounds like you could use some help. Which of these options would you prefer?</h2>
 
   <ion-list>
     <button ion-item (click)="goLearnASkill()" icon-right>
@@ -24,7 +20,7 @@
   </ion-list>
 
   <ion-list>
-    <button ion-item (click)="goFacebook()" color="secondary" icon-left>
+    <button ion-item (click)="goFacebook()" ion-text color="secondary" icon-left>
       <ion-icon name="logo-facebook" item-left></ion-icon>
       <h3 class="wrap-text">Connect with my Facebook support group</h3>
     </button>

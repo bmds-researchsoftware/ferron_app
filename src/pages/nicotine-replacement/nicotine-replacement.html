@@ -8,20 +8,16 @@
 
 
 <ion-content padding>
-  <ion-card>
-    <ion-card-content>
-      Many people use medications to help them cope with urges to smoke while
+  <h2>Many people use medications to help them cope with urges to smoke while
       they are quitting. Here is a list of the types of Nicotine Replacement
-      medications with some tips on how to use them in ways that work for you.
-    </ion-card-content>
-  </ion-card>
+      medications with some tips on how to use them in ways that work for you.</h2>
 
   <ion-list>
     <button ion-item icon-right
       *ngFor="let video of bundledVideos"
       (click)="openBundledModal(video)" icon-left>
       <h3 class="wrap-text">{{ video.title }}</h3>
-      <ion-icon color="secondary" name="videocam" item-left></ion-icon>
+      <ion-icon ion-text color="secondary" name="videocam" item-left></ion-icon>
     </button>
   </ion-list>
 </ion-content>

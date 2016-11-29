@@ -5,11 +5,8 @@
 </ion-header>
 
 <ion-content padding>
+  <h2>Quit Tips</h2>
   <ion-card>
-    <ion-card-header>
-      Quit Tips
-    </ion-card-header>
-
     <ion-card-content>
       {{ tipBody }}
     </ion-card-content>
@@ -29,13 +26,13 @@
 <ion-footer>
   <ion-toolbar>
     <ion-buttons>
-      <button ion-button color="secondary" (click)="reloadPage()">
+      <button ion-button (click)="reloadPage()">
         Click for next tip
       </button>
     </ion-buttons>
 
     <ion-buttons end>
-      <button ion-button (click)="goHome()">
+      <button ion-text color="secondary" ion-button (click)="goHome()">
         Finish
       </button>
     </ion-buttons>

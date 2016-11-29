@@ -5,16 +5,16 @@
 </ion-header>
 
 <ion-content padding>
-  <p>Please configure this device by entering the participant token.</p>
+  <h2>Please configure this device by entering the participant token.</h2>
 
   <ion-list>
     <ion-item>
-      <ion-label floating>Token</ion-label>
+      <ion-label floating>Enter Token Here</ion-label>
       <ion-input type="text" [(ngModel)]="model.token"></ion-input>
     </ion-item>
   </ion-list>
 
-  <button ion-button (click)="createAuthenticationToken()">
+  <button ion-button large (click)="createAuthenticationToken()">
     Continue
   </button>
 

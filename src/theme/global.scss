@@ -12,16 +12,22 @@
 // App Shared Sass variables belong in app.variables.scss.
 
 $yellow: #ffce63;
+$dark-blue: #044362;
 
-body {
-  font-size: 1.7rem;
+body, ion-app.md {
+  .content {
+    font-size: 1.7rem;
+  }
 }
 
-h2 {
-  font-size: 1.9rem;
+.content h2 {
+  font-size: 2rem;
 }
 
-/* yellow and blue positive */
+.card-md h2 {
+  font-size: 2rem;
+}
+
 .ion-page ion-content {
   background-color: $yellow;
 }
@@ -38,25 +44,33 @@ ion-navbar .toolbar-background {
   background-color: $yellow;
 }
 
+ion-label.label {
+  font-size: 1.8rem;
+}
+
 ion-list > ion-item.item:first-child {
-  border-top-color: #044362;
+  border-top-color: $dark-blue;
 }
 
 ion-list ion-item.item .item-inner {
-  border-bottom-color: #044362;
+  border-bottom-color: $dark-blue;
 }
 
 ion-list > ion-item.item:last-child {
-  border-bottom-color: #044362;
+  border-bottom-color: $dark-blue;
 }
 
 .item ion-label {
   margin-top: 20px;
   margin-bottom: 20px;
+
+  h3.text, h3.wrap-text {
+    font-size: 2rem;
+  }
 }
 
-.bar-button {
-  font-size: 1.7rem;
+.bar-button .button-inner {
+  font-size: 2rem;
 }
 
 .full-width {
@@ -95,6 +109,10 @@ button[large] ion-icon {
 
 .wrap-text {
   white-space: normal;
+}
+
+.list-header-md {
+  color: #424242;
 }
 
 /* allow for iOS list of button styles */
