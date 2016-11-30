@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="edu.northwestern.cbits.calmcopequit" version="0.6.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="edu.northwestern.cbits.calmcopequit" version="0.6.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Calm. Cope. Quit.</name>
   <description>A smoking cessation app.</description>
   <author email="cbits@northwestern.edu" href="http://www.cbits.northwestern.edu">CBITs</author>

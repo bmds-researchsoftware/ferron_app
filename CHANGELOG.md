@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.6.1 - 2016-11-30
+
+* capture all navigation button use data (#51)
+* synchronize reason to quit selections (#50)
+* set the reminder icon on Android
+* increase fonts; make UI consistent (#48)
+* display the Home shortcut only for development (#47)
+* update coping skills Facebook link (#46)
+
 ## 0.6.0 - 2016-11-18
 
 * update icon to alpha png (#43)
