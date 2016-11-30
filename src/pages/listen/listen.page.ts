@@ -3,11 +3,12 @@ import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
 import { AudioFollowUpPage } from './audio-follow-up.page';
 import { Component } from '@angular/core';
 import { ModalController, NavParams, ViewController } from 'ionic-angular';
+import { Tracking } from '../tracking';
 
 @Component({
   templateUrl: 'listen.html',
 })
-export class ListenPage {
+export class ListenPage extends Tracking {
   public streamingAudioFiles: Promise<Array<any>>;
   public bundledAudioFiles = [
     {
@@ -83,14 +84,17 @@ export class ListenPage {
       url: 'assets/audio_files/18_Body_Scan.mp3'
     },
   ];
+  public pageName = 'Listen to quit';
 
   constructor(public modalController: ModalController,
               public sqlite: FerronSqlite) {
-    this.sqlite.establishConnection();
+    super(sqlite);
   }
 
   public openBundledModal(audio: { url: string, title: string }) {
     let audioModal = this.modalController.create(BundledAudioPage, audio);
+    const buttonLabel = `Open audio file: ${audio.title}`;
+    this.recordNav(this.pageName, buttonLabel);
 
     audioModal.onDidDismiss(() => {
       let followUpModal = this.modalController.create(AudioFollowUpPage, audio);

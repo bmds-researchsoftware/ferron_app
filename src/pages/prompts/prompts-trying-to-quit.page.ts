@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Dialogs } from 'ionic-native';
 import { Constants } from '../../constants.service';
+import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
+import { Tracking } from '../tracking';
 
 /*
  * The page for coping skills prompts trying to quit.
@@ -11,11 +13,20 @@ import { Constants } from '../../constants.service';
 @Component({
   templateUrl: 'prompts-trying-to-quit.html'
 })
-export class PromptsTryingToQuitPage {
-  constructor(public nav: NavController, public constants: Constants) {
+export class PromptsTryingToQuitPage extends Tracking {
+  public pageName = 'Trying to quit';
+
+  constructor(
+    public nav: NavController,
+    public sqlite: FerronSqlite,
+    public constants: Constants
+  ) {
+    super(sqlite);
   }
 
   public goLearnASkill() {
+    const buttonLabel = 'Use a Skill to help me cope';
+    this.recordNav(this.pageName, buttonLabel);
     this.nav.push(PromptsLearnASkillPage);
   }
 

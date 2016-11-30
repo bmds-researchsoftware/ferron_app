@@ -2,6 +2,7 @@ import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
 import { HomePage } from '../home/home';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Tracking } from '../tracking';
 
 function getRandom(list: any[]) {
   let index = Math.floor(Math.random() * list.length);
@@ -15,21 +16,25 @@ function getRandom(list: any[]) {
 @Component({
   templateUrl: 'prompts-get-motivated-tip.html'
 })
-export class PromptsGetMotivatedTipPage {
+export class PromptsGetMotivatedTipPage extends Tracking {
   public tips: any[] = [];
   public tipBody: string = null;
   public tipUuid: string = null;
   public tipLiked: boolean = null;
-
   public resolve: Function = null;
+  public pageName = 'Get motivated tips';
 
   constructor(public nav: NavController, public sqlite: FerronSqlite) {
+    super(sqlite);
     this.sqlite.initialize().then(() => {
       this.refreshTips();
     });
   }
 
   public refreshTips() {
+    const buttonLabel = 'Click for next tip';
+    this.recordNav(this.pageName, buttonLabel);
+
     if (this.tips.length > 0) {
       this.setTip();
       return;

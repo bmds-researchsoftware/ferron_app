@@ -4,15 +4,18 @@ import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
 import { VideoFollowUpPage } from './video-follow-up.page';
 import { Component } from '@angular/core';
 import { ModalController, NavParams, ViewController } from 'ionic-angular';
+import { Tracking } from '../tracking';
 
 @Component({
   templateUrl: 'watch.html',
 })
-export class WatchPage {
+export class WatchPage extends Tracking {
   public streamingVideos: Promise<Array<any>>;
   public bundledVideos = [
-    { title: 'Bunny', url: 'assets/videos/big_buck_bunny.mp4' }
+    // waiting for content
+    // { title: 'Bunny', url: 'assets/videos/big_buck_bunny.mp4' }
   ];
+  public pageName = 'Watch to learn';
 
   public unavailableClass = 'danger';
   public availableClass = 'secondary';
@@ -21,6 +24,7 @@ export class WatchPage {
   constructor(public modalController: ModalController,
               public network: FerronNetwork,
               public sqlite: FerronSqlite) {
+    super(sqlite);
     this.sqlite.initialize().then(() => {
       this.refreshVideos();
     }).catch(error => {
@@ -33,6 +37,8 @@ export class WatchPage {
 
   public openBundledModal(video: { url: string, title: string }) {
     let videoModal = this.modalController.create(BundledVideoPage, video);
+    const buttonLabel = `Open video file: ${video.title}`;
+    this.recordNav(this.pageName, buttonLabel);
 
     videoModal.onDidDismiss(() => {
       let followUpModal = this.modalController.create(VideoFollowUpPage, video);
@@ -51,6 +57,8 @@ export class WatchPage {
     }
 
     let modal = this.modalController.create(StreamingVideoPage, video);
+    const buttonLabel = `Open streaming video: ${video.title}`;
+    this.recordNav(this.pageName, buttonLabel);
     modal.present();
   }
 
