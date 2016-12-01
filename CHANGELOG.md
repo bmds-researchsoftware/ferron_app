@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.2 - 2016-12-01
+
+* fix styles on iOS
+
 ## 0.6.1 - 2016-11-30
 
 * capture all navigation button use data (#51)
