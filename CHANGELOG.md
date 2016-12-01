@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.3 - 2016-12-01
+
+* add more style tweaks to both platforms
+
 ## 0.6.2 - 2016-12-01
 
 * fix styles on iOS
