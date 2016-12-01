@@ -14,7 +14,7 @@
 $yellow: #ffce63;
 $dark-blue: #044362;
 
-body, ion-app.md {
+body, ion-app.md, ion-app.ios {
   .content {
     font-size: 1.7rem;
   }
@@ -24,7 +24,7 @@ body, ion-app.md {
   font-size: 2rem;
 }
 
-.content .card-md {
+.content .card-md, .content .card-ios {
   h2, h3, h4, h5, h6 {
     font-size: 2rem;
   }
@@ -93,7 +93,7 @@ button[large] ion-icon {
   font-size: 1.7em;
 }
 
-button.item.text-md-secondary {
+button.item.text-md-secondary, button.item.text-ios-secondary {
   color: white;
 }
 
@@ -117,7 +117,7 @@ button.item.text-md-secondary {
   white-space: normal;
 }
 
-.list-header-md {
+.list-header-md, .list-header-ios {
   color: #424242;
 }
 
