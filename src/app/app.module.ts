@@ -1,12 +1,13 @@
-import { NgModule } from '@angular/core';
-import { IonicApp, IonicModule } from 'ionic-angular';
+import { NgModule, ErrorHandler } from '@angular/core';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { FerronApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { AudioFollowUpPage } from '../pages/listen/audio-follow-up.page';
 import { ConfigurationPage } from '../pages/configuration/configuration.page';
 import { CopingSkillsPage } from '../pages/coping-skills/coping-skills';
 import { LearnPage } from '../pages/learn/learn';
-import { BundledAudioPage, ListenPage } from '../pages/listen/listen.page';
+import { BundledAudioPage } from '../pages/listen/bundled-audio.page';
+import { ListenPage } from '../pages/listen/listen.page';
 import { PromptsGetMotivatedTipPage } from '../pages/prompts/prompts-get-motivated-tip.page';
 import { Store } from '../store/store.service';
 import { AuthenticationTokens } from '../pages/configuration/authentication-tokens.service';
@@ -26,7 +27,9 @@ import { PromptsPage } from '../pages/prompts/prompts.page';
 import { ReasonsToQuitPage } from '../pages/reasons-to-quit/reasons-to-quit';
 import { RemindersPage } from '../pages/reminders/reminders';
 import { VideoFollowUpPage } from '../pages/watch/video-follow-up.page';
-import { BundledVideoPage, StreamingVideoPage, WatchPage } from '../pages/watch/watch.page';
+import { BundledVideoPage } from '../pages/watch/bundled-video.page';
+import { StreamingVideoPage } from '../pages/watch/streaming-video.page';
+import { WatchPage } from '../pages/watch/watch.page';
 import { HomePage } from '../pages/home/home';
 
 @NgModule({
@@ -85,14 +88,15 @@ import { HomePage } from '../pages/home/home';
     WatchPage
   ],
   providers: [
-    AuthenticationTokens,
-    Constants,
-    FerronAppVersion,
-    FerronDevice,
-    FerronLocalNotifications,
-    FerronNetwork,
-    FerronSqlite,
-    Store
+    { provide: AuthenticationTokens, useClass: AuthenticationTokens },
+    { provide: Constants, useClass: Constants },
+    { provide: FerronAppVersion, useClass: FerronAppVersion },
+    { provide: FerronDevice, useClass: FerronDevice },
+    { provide: FerronLocalNotifications, useClass: FerronLocalNotifications },
+    { provide: FerronNetwork, useClass: FerronNetwork },
+    { provide: FerronSqlite, useClass: FerronSqlite },
+    { provide: Store, useClass: Store },
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
 export class AppModule {}

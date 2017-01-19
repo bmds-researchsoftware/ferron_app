@@ -1,9 +1,10 @@
-import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
+import { Component } from '@angular/core';
+import { ModalController } from 'ionic-angular';
 import { FerronNetwork } from '../../native-plugins/ferron-network.service';
 import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
+import { BundledVideoPage } from './bundled-video.page';
+import { StreamingVideoPage } from './streaming-video.page';
 import { VideoFollowUpPage } from './video-follow-up.page';
-import { Component } from '@angular/core';
-import { ModalController, NavParams, ViewController } from 'ionic-angular';
 import { Tracking } from '../tracking';
 
 @Component({
@@ -59,6 +60,15 @@ export class WatchPage extends Tracking {
     let modal = this.modalController.create(StreamingVideoPage, video);
     const buttonLabel = `Open streaming video: ${video.title}`;
     this.recordNav(this.pageName, buttonLabel);
+
+    modal.onDidDismiss(() => {
+      let followUpModal = this.modalController.create(VideoFollowUpPage, video);
+
+      followUpModal.onDidDismiss(responses => {
+        this.sqlite.persist('video_follow_up_responses', responses);
+      });
+      followUpModal.present();
+    });
     modal.present();
   }
 
@@ -68,77 +78,5 @@ export class WatchPage extends Tracking {
 
   public refreshVideos() {
     this.streamingVideos = this.sqlite.fetchAll('videos');
-  }
-}
-
-// A modal that displays the selected bundled video.
-@Component({
-  templateUrl: 'bundled-video.html'
-})
-export class BundledVideoPage {
-  constructor(public domSanitizer: DomSanitizer,
-              public params: NavParams,
-              public viewController: ViewController) {
-  }
-
-  /* istanbul ignore next: trivial method */
-  public videoTitle(): string {
-    return this.params.get('title');
-  }
-
-  /* istanbul ignore next: trivial method */
-  public videoId(): string {
-    return this.params.get('identifier');
-  }
-
-  /* istanbul ignore next: trivial method */
-  public url() {
-    return this.params.get('url');
-  }
-
-  /* istanbul ignore next: trivial method */
-  public videoUrl(): SafeResourceUrl {
-    return this.domSanitizer.bypassSecurityTrustResourceUrl(
-      this.url()
-    );
-  }
-
-  /* istanbul ignore next: delegate method */
-  public dismiss() {
-    this.viewController.dismiss();
-  }
-}
-
-// A modal that displays the selected streaming video.
-@Component({
-  templateUrl: 'streaming-video.html'
-})
-export class StreamingVideoPage {
-  constructor(public domSanitizer: DomSanitizer,
-              public params: NavParams,
-              public viewController: ViewController) {
-  }
-
-  /* istanbul ignore next: trivial method */
-  public videoTitle(): string {
-    return this.params.get('title');
-  }
-
-  /* istanbul ignore next: trivial method */
-  public videoId(): string {
-    return this.params.get('identifier');
-  }
-
-  /* istanbul ignore next: trivial method */
-  public videoUrl(): SafeResourceUrl {
-    return this.domSanitizer.bypassSecurityTrustResourceUrl(
-      'https://player.vimeo.com/video/' +
-      this.videoId() + '?color=5dc0f5&portrait=0'
-    );
-  }
-
-  /* istanbul ignore next: delegate method */
-  public dismiss() {
-    this.viewController.dismiss();
   }
 }

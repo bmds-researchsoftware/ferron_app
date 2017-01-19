@@ -1,33 +1,44 @@
-/**
- * If you are not using webpack to build your ionic app, this configuration will not affect your code,
- * se rollup.config.js instead.
- */
+var path = require('path');
+var webpack = require('webpack');
+var ionicWebpackFactory = require(process.env.IONIC_WEBPACK_FACTORY);
 
-const webpackConfig = require('../node_modules/@ionic/app-scripts/config/webpack.config');
-const webpack = require('webpack');
+module.exports = {
+  entry: process.env.IONIC_APP_ENTRY_POINT,
+  output: {
+    path: '{{BUILD}}',
+    filename: process.env.IONIC_OUTPUT_JS_FILE_NAME,
+    devtoolModuleFilenameTemplate: ionicWebpackFactory.getSourceMapperFunction(),
+  },
+  devtool: process.env.IONIC_GENERATE_SOURCE_MAP ? process.env.IONIC_SOURCE_MAP_TYPE : '',
 
-console.log('Editing webpack configuration to inject env');
+  resolve: {
+    extensions: ['.ts', '.js', '.json'],
+    modules: [path.resolve('node_modules')]
+  },
 
-const nodeEnv = JSON.stringify(process.env.NODE_ENV) || 'development';
-const apiUrl = JSON.stringify(process.env.API_URL) || JSON.stringify('');
-const platform = JSON.stringify(process.env.PLATFORM) || 'android';
+  module: {
+    loaders: [
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
+      {
+        //test: /\.(ts|ngfactory.js)$/,
+        test: /\.ts$/,
+        loader: process.env.IONIC_WEBPACK_LOADER
+      }
+    ]
+  },
 
-/**
- * Plugin: DefinePlugin
- * Description: Define free variables.
- * Useful for having development builds with debug logging or adding global constants.
- *
- * Environment helpers
- *
- * See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
- */
+  plugins: [
+    ionicWebpackFactory.getIonicEnvironmentPlugin()
+  ],
 
-webpackConfig.plugins.push(
-    new webpack.DefinePlugin({
-        'process.env': {
-            'NODE_ENV': nodeEnv,
-            'API_URL': apiUrl,
-            'PLATFORM': platform
-        }
-    })
-);
+  // Some libraries import Node modules but don't use them in the browser.
+  // Tell Webpack to provide empty mocks for them so importing them works.
+  node: {
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
+  }
+};

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalController } from 'ionic-angular';
-import { BundledVideoPage } from '../watch/watch.page';
+import { BundledVideoPage } from '../watch/bundled-video.page';
 import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
 import { Tracking } from '../tracking';
 

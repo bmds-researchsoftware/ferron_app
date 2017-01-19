@@ -9,22 +9,22 @@ let DEFAULT_UUID: string = 'DEFAULT-UUID';
 @Injectable()
 export class FerronDevice {
   public uuid(): string {
-    return Device.device.uuid || DEFAULT_UUID;
+    return (<any> Device).uuid || DEFAULT_UUID;
   }
 
   public version(): string {
-    return Device.device.version || '';
+    return (<any> Device).version || '';
   }
 
   public manufacturer(): string {
-    return Device.device.manufacturer || '';
+    return (<any> Device).manufacturer || '';
   }
 
   public model(): string {
-    return Device.device.model || '';
+    return (<any> Device).model || '';
   }
 
   public platform(): string {
-    return Device.device.platform || '';
+    return (<any> Device).platform || '';
   }
 }

@@ -1,35 +1,38 @@
-
-// https://www.npmjs.com/package/fs-extra
+// this is a custom dictionary to make it easy to extend/override
+// provide a name for an entry, it can be anything such as 'copyAssets' or 'copyFonts'
+// then provide an object with a `src` array of globs and a `dest` string
 
 var stage = process.env['STAGE'] === 'staging' ? 'staging' : (
   process.env['STAGE'] === 'production' ? 'production' : 'development'
 );
 
 module.exports = {
-  include: [
-    {
-      src: 'src/assets/',
-      dest: 'www/assets/'
-    },
-    {
-      src: 'src/index.html',
-      dest: 'www/index.html'
-    },
-    {
-      src: 'node_modules/ionic-angular/polyfills/polyfills.js',
-      dest: 'www/build/polyfills.js'
-    },
-    {
-      src: 'node_modules/ionicons/dist/fonts/',
-      dest: 'www/assets/fonts/'
-    },
-    {
-      src: 'src/lib/',
-      dest: 'www/build/'
-    },
-    {
-      src: 'src/config/' + stage + '/config.js',
-      dest: 'www/build/config.js'
-    }
-  ]
+  copyAssets: {
+    src: ['{{SRC}}/assets/**/*'],
+    dest: '{{WWW}}/assets'
+  },
+  copyIndexContent: {
+    src: ['{{SRC}}/index.html', '{{SRC}}/manifest.json', '{{SRC}}/service-worker.js'],
+    dest: '{{WWW}}'
+  },
+  copyFonts: {
+    src: ['{{ROOT}}/node_modules/ionicons/dist/fonts/**/*', '{{ROOT}}/node_modules/ionic-angular/fonts/**/*'],
+    dest: '{{WWW}}/assets/fonts'
+  },
+  copyPolyfills: {
+    src: ['{{ROOT}}/node_modules/ionic-angular/polyfills/polyfills.js'],
+    dest: '{{BUILD}}'
+  },
+  copySwToolbox: {
+    src: ['{{ROOT}}/node_modules/sw-toolbox/sw-toolbox.js'],
+    dest: '{{BUILD}}'
+  },
+  copyLib: {
+    src: ['{{SRC}}/lib/*'],
+    dest: '{{BUILD}}'
+  },
+  copyConfig: {
+    src: [`{{SRC}}/config/${stage}/config.js`],
+    dest: '{{BUILD}}'
+  }
 };
