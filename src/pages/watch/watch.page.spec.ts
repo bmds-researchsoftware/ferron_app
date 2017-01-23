@@ -1,4 +1,4 @@
-import { FerronNetwork } from '../../native-plugins/ferron-network.service';
+/*import { FerronNetwork } from '../../native-plugins/ferron-network.service';
 import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
 import { WatchPage } from './watch.page';
 import { TestBed, inject } from '@angular/core/testing';
@@ -39,4 +39,4 @@ describe('WatchPage', () => {
       });
     });
   });
-});
+});*/

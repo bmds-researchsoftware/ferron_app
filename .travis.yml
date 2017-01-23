@@ -8,5 +8,3 @@ cache:
     - node_modules
 before_script:
   - export "PHANTOMJS_BIN=`which phantomjs`"
-script:
-  - echo 'does not work yet...'

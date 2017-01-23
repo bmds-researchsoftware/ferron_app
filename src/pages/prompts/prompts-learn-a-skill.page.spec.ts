@@ -1,4 +1,4 @@
-import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
+/*import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
 import { ListenPage } from '../../pages/listen/listen.page';
 import { WatchPage } from '../../pages/watch/watch.page';
 import { PromptsLearnASkillPage } from './prompts-learn-a-skill.page';
@@ -55,4 +55,4 @@ describe('PromptsLearnASkillPage', () => {
       });
     }));
   });
-});
+});*/

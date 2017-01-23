@@ -1,4 +1,4 @@
-import { FerronSqlite } from '../native-plugins/ferron-sqlite.service';
+/*import { FerronSqlite } from '../native-plugins/ferron-sqlite.service';
 import { Store } from './store.service';
 import { TestBed, inject } from '@angular/core/testing';
 
@@ -53,4 +53,4 @@ describe('Store', () => {
       });
     });
   });
-});
+});*/

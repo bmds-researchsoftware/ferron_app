@@ -14,6 +14,7 @@ import { AuthenticationTokens } from '../pages/configuration/authentication-toke
 import { Constants } from '../constants.service';
 import { FerronAppVersion } from '../native-plugins/ferron-app-version.service';
 import { FerronDevice } from '../native-plugins/ferron-device.service';
+import { FerronDialogs } from '../native-plugins/ferron-dialogs.service';
 import { FerronLocalNotifications } from '../native-plugins/ferron-local-notifications.service';
 import { FerronNetwork } from '../native-plugins/ferron-network.service';
 import { FerronSqlite } from '../native-plugins/ferron-sqlite.service';
@@ -92,6 +93,7 @@ import { HomePage } from '../pages/home/home';
     { provide: Constants, useClass: Constants },
     { provide: FerronAppVersion, useClass: FerronAppVersion },
     { provide: FerronDevice, useClass: FerronDevice },
+    { provide: FerronDialogs, useClass: FerronDialogs },
     { provide: FerronLocalNotifications, useClass: FerronLocalNotifications },
     { provide: FerronNetwork, useClass: FerronNetwork },
     { provide: FerronSqlite, useClass: FerronSqlite },

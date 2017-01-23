@@ -2,8 +2,8 @@ import { PromptsLearnASkillPage } from './prompts-learn-a-skill.page';
 import { PromptsQuitTipPage } from './prompts-quit-tip.page';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Dialogs } from 'ionic-native';
 import { Constants } from '../../constants.service';
+import { FerronDialogs } from '../../native-plugins/ferron-dialogs.service';
 import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
 import { Tracking } from '../tracking';
 
@@ -19,7 +19,8 @@ export class PromptsTryingToQuitPage extends Tracking {
   constructor(
     public nav: NavController,
     public sqlite: FerronSqlite,
-    public constants: Constants
+    public constants: Constants,
+    public dialogs: FerronDialogs
   ) {
     super(sqlite);
   }
@@ -31,16 +32,21 @@ export class PromptsTryingToQuitPage extends Tracking {
   }
 
   public goQuitTip() {
+    const buttonLabel = 'Get a Quick Tip on how not to smoke';
+    this.recordNav(this.pageName, buttonLabel);
     this.nav.push(PromptsQuitTipPage);
   }
 
   public goFacebook() {
-    Dialogs.confirm(
+    this.dialogs.confirm(
       "Do you want to open Facebook?",
       null,
       ['Yes', 'No']
     ).then(buttonNumber => {
       if (buttonNumber === 1) {
+        const buttonLabel = 'Join our Facebook support group';
+
+        this.recordNav(this.pageName, buttonLabel);
         window.open(this.constants.facebookGroupUrl, '_system');
       }
     });

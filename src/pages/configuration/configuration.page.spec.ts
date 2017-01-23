@@ -1,5 +1,5 @@
 
-import { Constants } from '../../constants.service';
+/*import { Constants } from '../../constants.service';
 import { FerronDevice } from '../../native-plugins/ferron-device.service';
 import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
 import { HomePage } from '../../pages/home/home';
@@ -105,4 +105,4 @@ describe('ConfigurationPage', () => {
       });
     });
   });
-});
+});*/
