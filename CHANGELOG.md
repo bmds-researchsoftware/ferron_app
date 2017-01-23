@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.4 - 2017-01-23
+
+* use Media plugin for native audio (#61)
+* fix button font color issues (#60)
+* refactor button press tracking on homepage
+* capture Facebook link navigations
+* capture video prompt feedback; update dependencies (#57)
+
 ## 0.6.3 - 2016-12-01
 
 * add more style tweaks to both platforms
