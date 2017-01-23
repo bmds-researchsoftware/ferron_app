@@ -13,6 +13,7 @@
 </ion-header>
 
 <ion-content padding>
-  <audio controls="controls" [src]="audioUrl()" style="width: 100%;"></audio>
+  <label class="large">{{ currentPosition }} / {{ duration() }}</label>
+  <button ion-button icon-right block large (click)="doNextAction()">{{ nextActionName() }} <ion-icon [name]="nextActionIcon()"></ion-icon></button>
 </ion-content>
 

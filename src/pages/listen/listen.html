@@ -13,7 +13,7 @@
 
   <ion-list>
     <button ion-item
-      *ngFor="let audio of bundledAudioFiles"
+      *ngFor="let audio of bundledAudioFilePaths()"
       (click)="openBundledModal(audio)" icon-left>
       <ion-label ion-text color="secondary">
         {{ audio.title }}

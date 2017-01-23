@@ -2,7 +2,7 @@ import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
 import { AudioFollowUpPage } from './audio-follow-up.page';
 import { BundledAudioPage } from './bundled-audio.page';
 import { Component } from '@angular/core';
-import { ModalController } from 'ionic-angular';
+import { ModalController, Platform } from 'ionic-angular';
 import { Tracking } from '../tracking';
 
 @Component({
@@ -13,81 +13,82 @@ export class ListenPage extends Tracking {
   public bundledAudioFiles = [
     {
       title: 'Urge Surfing',
-      url: 'assets/audio_files/01_Urge_Surfing.mp3'
+      url: '01_Urge_Surfing.mp3'
     },
     {
       title: 'Loving Kindness',
-      url: 'assets/audio_files/02_Loving_Kindness.mp3'
+      url: '02_Loving_Kindness.mp3'
     },
     {
       title: 'The Beauty of Nature',
-      url: 'assets/audio_files/03_The_Beauty_of_Nature.mp3'
+      url: '03_The_Beauty_of_Nature.mp3'
     },
     {
       title: 'Daily Tasks',
-      url: 'assets/audio_files/04_Daily_Tasks.mp3'
+      url: '04_Daily_Tasks.mp3'
     },
     {
       title: 'Opening Your Ears to Sound',
-      url: 'assets/audio_files/05_Opening_Your_Ears_to_Sound.mp3'
+      url: '05_Opening_Your_Ears_to_Sound.mp3'
     },
     {
       title: 'Mindful Immersion',
-      url: 'assets/audio_files/06_Mindful_Immersion.mp3'
+      url: '06_Mindful_Immersion.mp3'
     },
     {
       title: 'Awakening Your Senses',
-      url: 'assets/audio_files/07_Awakening_Your_Senses.mp3'
+      url: '07_Awakening_Your_Senses.mp3'
     },
     {
       title: 'Seated Walking',
-      url: 'assets/audio_files/08_Seated_Walking.mp3'
+      url: '08_Seated_Walking.mp3'
     },
     {
       title: 'The Four Elements',
-      url: 'assets/audio_files/09_The_Four_Elements.mp3'
+      url: '09_The_Four_Elements.mp3'
     },
     {
       title: 'Breathing in, Breathing out',
-      url: 'assets/audio_files/10_Breathing_in_Breathing_out.mp3'
+      url: '10_Breathing_in_Breathing_out.mp3'
     },
     {
       title: 'Relaxed Deep Breathing',
-      url: 'assets/audio_files/11_Relaxed_Deep_Breathing.mp3'
+      url: '11_Relaxed_Deep_Breathing.mp3'
     },
     {
       title: 'The Whoosh Breath',
-      url: 'assets/audio_files/12_The_Whoosh_Breath.mp3'
+      url: '12_The_Whoosh_Breath.mp3'
     },
     {
       title: 'Observing Our Cravings',
-      url: 'assets/audio_files/13_Observing_Our_Cravings.mp3'
+      url: '13_Observing_Our_Cravings.mp3'
     },
     {
       title: 'The Cycle of Addiction',
-      url: 'assets/audio_files/14_The_Cycle_of_Addiction.mp3'
+      url: '14_The_Cycle_of_Addiction.mp3'
     },
     {
       title: 'Walking',
-      url: 'assets/audio_files/15_Walking.mp3'
+      url: '15_Walking.mp3'
     },
     {
       title: 'Gratitude',
-      url: 'assets/audio_files/16_Gratitude.mp3'
+      url: '16_Gratitude.mp3'
     },
     {
       title: 'Mindful Sensing',
-      url: 'assets/audio_files/17_Mindful_Sensing.mp3'
+      url: '17_Mindful_Sensing.mp3'
     },
     {
       title: 'Body Scan',
-      url: 'assets/audio_files/18_Body_Scan.mp3'
+      url: '18_Body_Scan.mp3'
     },
   ];
   public pageName = 'Listen to quit';
 
   constructor(public modalController: ModalController,
-              public sqlite: FerronSqlite) {
+              public sqlite: FerronSqlite,
+              public platform: Platform) {
     super(sqlite);
   }
 
@@ -105,5 +106,16 @@ export class ListenPage extends Tracking {
       followUpModal.present();
     });
     audioModal.present();
+  }
+
+  public bundledAudioFilePaths(): any[] {
+    let prefix = this.platform.is('android') ? '/android_asset/www/' : '';
+
+    return this.bundledAudioFiles.map((entry) => {
+      return {
+        title: entry.title,
+        url: `${prefix}assets/audio_files/${entry.url}`
+      };
+    });
   }
 }
