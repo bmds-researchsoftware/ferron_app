@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.5 - 2017-01-25
+
+* change Facebook link text
+* update misc. text
+* ensure splash screen displays on Android (#63)
+
 ## 0.6.4 - 2017-01-23
 
 * use Media plugin for native audio (#61)
