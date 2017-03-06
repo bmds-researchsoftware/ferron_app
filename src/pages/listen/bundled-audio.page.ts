@@ -37,6 +37,14 @@ export class BundledAudioPage {
     this.viewController.dismiss();
   }
 
+  ionViewWillLeave() {
+    if (!this.isPaused()) {
+      this.file.pause();
+      this.currentState = this.PAUSED;
+      this.stopPositionUpdates();
+    }
+  }
+
   public doNextAction() {
     if (this.isPaused()) {
       this.file.play();
