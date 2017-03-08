@@ -14,15 +14,11 @@ export class NicotineReplacementPage extends Tracking {
   public bundledVideos = [
     {
       title: 'Nicotine Replacement Patch',
-      url: 'assets/videos/big_buck_bunny.mp4'
+      url: 'assets/videos/NRT-patches.mp4'
     },
     {
-      title: 'Nicotine Replacement Gum',
-      url: 'assets/videos/big_buck_bunny.mp4'
-    },
-    {
-      title: 'Nicotine Replacement Lozenge',
-      url: 'assets/videos/big_buck_bunny.mp4'
+      title: 'Nicotine Replacement Gum and Lozenges',
+      url: 'assets/videos/NRT-gum-lozenges.mp4'
     }
   ];
   public pageName = 'Nicotice replacement';
