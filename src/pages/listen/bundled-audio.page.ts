@@ -32,6 +32,10 @@ export class BundledAudioPage {
     return this.params.get('title');
   }
 
+  public imageUrl(): string {
+    return this.params.get('image');
+  }
+
   public dismiss() {
     this.stopPositionUpdates();
     this.viewController.dismiss();

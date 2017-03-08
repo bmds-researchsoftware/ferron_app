@@ -12,8 +12,14 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <label class="large">{{ currentPosition }} / {{ duration() }}</label>
-  <button ion-button icon-right block large (click)="doNextAction()">{{ nextActionName() }} <ion-icon [name]="nextActionIcon()"></ion-icon></button>
+<ion-content>
+  <ion-card style="text-align: center;">
+    <img [src]="imageUrl()" />
+
+    <div>
+      <label class="large">{{ currentPosition }} / {{ duration() }}</label>
+      <button ion-button icon-right block large (click)="doNextAction()">{{ nextActionName() }} <ion-icon [name]="nextActionIcon()"></ion-icon></button>
+    </div>
+  </ion-card>
 </ion-content>
 
