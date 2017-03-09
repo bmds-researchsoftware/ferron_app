@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.6 - 2017-03-09
+
+* update NRT videos (#68)
+* update audio files; add images to audio (#67)
+* ensure audio is paused when leaving this page (#66)
+
 ## 0.6.5 - 2017-01-25
 
 * change Facebook link text
