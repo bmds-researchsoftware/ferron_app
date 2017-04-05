@@ -11,6 +11,7 @@
   <access origin="https://codepush.blob.core.windows.net"/>
   <access origin="https://player.vimeo.com"/>
   <access origin="https://*.vimeocdn.com"/>
+  <access origin="https://*.akamaized.net"/>
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
   <allow-intent href="tel:*"/>
