@@ -25,5 +25,13 @@ production version has been vetted, upload it to the
 
 Build the app for staging with `npm run build:ios:staging`, and for production
 with the analogous command. Within Xcode (7+), ensure the General settings are
-appropriate and then select Product > Archive. Upload to HockeyApp, and once
-the production version has been vetted, upload it to the App Store from Xcode.
+appropriate (choose the "BIT Core" Team and the "Wildcard iOS App Store"
+Provisioning Profile).
+
+Release to the App Store with the fastlane tool:
+
+```bash
+gem install fastlane
+cd platforms/ios
+fastlane release
+```
