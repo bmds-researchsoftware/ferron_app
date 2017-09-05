@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.7 - 2017-04-07
+
+* FCQ-50 update whitelisted domains for Vimeo (#70)
+
 ## 0.6.6 - 2017-03-09
 
 * update NRT videos (#68)
