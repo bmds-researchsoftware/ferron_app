@@ -8,6 +8,12 @@
 
 
 <ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-input [(ngModel)]="additionalResponse.text" type="text" placeholder="Additional reason" (blur)="saveAdditionalResponse()"></ion-input>
+    </ion-item>
+  </ion-list>
+
   <ion-list *ngIf="saveEnabled">
     <ion-item *ngFor="let reason of sortedReasons | async">
       <ion-label class="wrap-text">{{ reason.text }}</ion-label>
