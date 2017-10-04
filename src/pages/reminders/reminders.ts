@@ -3,6 +3,13 @@ import { NavController } from 'ionic-angular';
 import moment from 'moment';
 import { FerronLocalNotifications } from '../../native-plugins/ferron-local-notifications.service';
 import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
+import { FerronToast } from '../../native-plugins/ferron-toast.service';
+
+const TIME_FORMAT = 'HH:mm';
+
+function getMoment(timestamp: string): moment.Moment {
+  return moment(timestamp, TIME_FORMAT);
+}
 
 /*
   Page that displays reminder time.
@@ -11,59 +18,54 @@ import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
   templateUrl: 'reminders.html',
 })
 export class RemindersPage {
-  public reminderTimestamp: string;
   public APP_TITLE = 'Calm. Cope. Quit.';
   public REMINDER_TEXT = 'Check-in and do your coping skill';
   public ICON = 'res://../drawable-hdpi-v4/icon.png';
 
-  private _isDisabled = true;
-  private NOTIFICATION_ID = 1;
-  private TIME_FORMAT = 'HH:mm';
+  private reminders = [
+    { timestamp: '', id: 1 },
+    { timestamp: '', id: 2 },
+    { timestamp: '', id: 3 }
+  ];
+  private US_TIME_FORMAT = 'h:mm a';
 
   constructor(
     public nav: NavController,
     public notifications: FerronLocalNotifications,
-    public sqlite: FerronSqlite
+    public sqlite: FerronSqlite,
+    public toast: FerronToast
   ) {
-    console.log('look up notification 1');
-    this.notifications.get(this.NOTIFICATION_ID).then(notification => {
-      if (notification) {
-        console.log('found notification scheduled at ' + notification.at);
-        this.reminderTimestamp = moment.unix(notification.at).format(this.TIME_FORMAT);
-      } else {
-        console.log('did not find notification');
-        this._isDisabled = false;
+    this.reminders.forEach(reminder => {
+      this.notifications.get(reminder.id).then(notification => {
+        if (notification) {
+          reminder.timestamp = this.formatTimestamp(notification.at);
+        }
+      });
+    });
+  }
+
+  public saveTime(reminder: { timestamp: string, id: number }) {
+    let nextTime = getMoment(reminder.timestamp);
+
+    this.reminders.some(existingReminder => {
+      if (reminder.id !== existingReminder.id &&
+          existingReminder.timestamp !== '') {
+        let existingTime = getMoment(existingReminder.timestamp).dayOfYear(nextTime.dayOfYear());
+        if (nextTime.isBetween(moment(existingTime).subtract(30, 'minutes'),
+                               moment(existingTime).add(30, 'minutes'))) {
+          reminder.timestamp = '';
+          this.toast.show('notifications must be 30 minutes apart');
+          return true;
+        }
       }
-    }).catch(_ => {
-      console.log('error looking up notification');
-      this._isDisabled = false;
     });
 
-    setTimeout(_ => {
-      console.log('after timeout checking timestamp');
-      if (this.reminderTimestamp == null) {
-        console.log('timestamp not set, enabling input');
-        this._isDisabled = false;
-      }
-    }, 500);
-  }
-
-  public isDisabled() {
-    return this._isDisabled;
-  }
-
-  public timeChange() {
-    console.log('string is now ' + this.reminderTimestamp);
-    this._isDisabled = true;
-    let nextTime = moment(this.reminderTimestamp, this.TIME_FORMAT);
-
     if (nextTime.isBefore(moment())) {
-      console.log('time is before now, adding a day');
       nextTime = nextTime.add(1, 'day');
     }
 
     this.notifications.schedule({
-      id: this.NOTIFICATION_ID,
+      id: reminder.id,
       title: this.APP_TITLE,
       text: this.REMINDER_TEXT,
       every: 'day',
@@ -74,8 +76,32 @@ export class RemindersPage {
     this.sqlite.initialize().then(() => {
       this.sqlite.persist('reminders', {
         hour: nextTime.hour().toString(),
-        minute: nextTime.minute().toString()
+        minute: nextTime.minute().toString(),
+        is_deleted: false
       });
     });
+  }
+  
+  public formatUSTimestamp(at: string) {
+    return getMoment(at).format(this.US_TIME_FORMAT);
+  }
+
+  public deleteReminder(reminder: { timestamp: string, id: number }) {
+    let momentTime = getMoment(reminder.timestamp);
+
+    this.notifications.cancel(reminder.id).then(() => {
+      this.reminders[reminder.id - 1].timestamp = '';
+      this.sqlite.initialize().then(() => {
+        this.sqlite.persist('reminders', {
+          hour: momentTime.hour().toString(),
+          minute: momentTime.minute().toString(),
+          is_deleted: true
+        });
+      });
+    });
+  }
+
+  private formatTimestamp(at: number) {
+    return moment.unix(at).format(TIME_FORMAT);
   }
 }

@@ -6,13 +6,19 @@
 
 <ion-content padding>
   <h2>
-    Select a time to receive a notification each day.
+    Select times to receive notifications each day.
   </h2>
 
   <ion-list>
-    <ion-item>
-      <ion-label>Select Time Here</ion-label>
-      <ion-datetime [disabled]="isDisabled()" displayFormat="h:mm a" [(ngModel)]="reminderTimestamp" (ionChange)="timeChange()"></ion-datetime>
-    </ion-item>
+    <ng-container *ngFor="let reminder of reminders">
+      <ion-item *ngIf="reminder.timestamp === ''">
+        <ion-label>Select Time {{ reminder.id }}</ion-label>
+        <ion-datetime displayFormat="h:mm a" [(ngModel)]="reminder.timestamp" (ionChange)="saveTime(reminder)"></ion-datetime>
+      </ion-item>
+      <ion-item *ngIf="reminder.timestamp !== ''">
+        <strong>{{ formatUSTimestamp(reminder.timestamp) }}</strong>
+        <ion-icon name="trash" item-right (click)="deleteReminder(reminder)"></ion-icon>
+      </ion-item>
+    </ng-container>
   </ion-list>
 </ion-content>

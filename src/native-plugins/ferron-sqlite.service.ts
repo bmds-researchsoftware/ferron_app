@@ -104,7 +104,8 @@ const TABLES: Table[] = [
       ['client_updated_at', 'INTEGER'],
       ['is_dirty', 'INTEGER'],
       ['hour', 'VARCHAR(2)'],
-      ['minute', 'VARCHAR(2)']
+      ['minute', 'VARCHAR(2)'],
+      ['is_deleted', 'INTEGER']
     ],
     isSyncable: true,
     name: 'reminders'
@@ -216,7 +217,11 @@ export class FerronSqlite {
         TABLES.map(table => {
           return this.createTable(table.name, table.columns);
         })
-      );
+      ).then(() => {
+        // migrations here
+        this.db.executeSql('ALTER TABLE reminders ADD COLUMN is_deleted INTEGER', null)
+               .catch(_error => { /* ignore if the column has already been added */ });
+      });
     }
   }
 

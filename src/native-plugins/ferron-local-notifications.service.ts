@@ -28,4 +28,8 @@ export class FerronLocalNotifications {
   public on(eventName: string, callback: Function) {
     LocalNotifications.on(eventName, callback);
   }
+
+  public cancel(notificationId: number): Promise<any> {
+    return LocalNotifications.cancel(notificationId);
+  }
 }

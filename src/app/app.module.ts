@@ -18,6 +18,7 @@ import { FerronDialogs } from '../native-plugins/ferron-dialogs.service';
 import { FerronLocalNotifications } from '../native-plugins/ferron-local-notifications.service';
 import { FerronNetwork } from '../native-plugins/ferron-network.service';
 import { FerronSqlite } from '../native-plugins/ferron-sqlite.service';
+import { FerronToast } from '../native-plugins/ferron-toast.service';
 import { NicotineReplacementPage } from '../pages/nicotine-replacement/nicotine-replacement.page';
 import { OneStepAtATimePage } from '../pages/one-step-at-a-time/one-step-at-a-time.page';
 import { PromptsLearnASkillPage } from '../pages/prompts/prompts-learn-a-skill.page';
@@ -97,6 +98,7 @@ import { HomePage } from '../pages/home/home';
     { provide: FerronLocalNotifications, useClass: FerronLocalNotifications },
     { provide: FerronNetwork, useClass: FerronNetwork },
     { provide: FerronSqlite, useClass: FerronSqlite },
+    { provide: FerronToast, useClass: FerronToast },
     { provide: Store, useClass: Store },
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
