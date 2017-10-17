@@ -28,6 +28,8 @@ import { PromptsTryingToQuitPage } from '../pages/prompts/prompts-trying-to-quit
 import { PromptsPage } from '../pages/prompts/prompts.page';
 import { ReasonsToQuitPage } from '../pages/reasons-to-quit/reasons-to-quit';
 import { RemindersPage } from '../pages/reminders/reminders';
+import { TrackerPage } from '../pages/tracker/tracker';
+import { TrackerFormPage } from '../pages/tracker/tracker-form';
 import { VideoFollowUpPage } from '../pages/watch/video-follow-up.page';
 import { BundledVideoPage } from '../pages/watch/bundled-video.page';
 import { StreamingVideoPage } from '../pages/watch/streaming-video.page';
@@ -57,6 +59,8 @@ import { HomePage } from '../pages/home/home';
     ReasonsToQuitPage,
     RemindersPage,
     StreamingVideoPage,
+    TrackerPage,
+    TrackerFormPage,
     VideoFollowUpPage,
     WatchPage
   ],
@@ -86,6 +90,8 @@ import { HomePage } from '../pages/home/home';
     ReasonsToQuitPage,
     RemindersPage,
     StreamingVideoPage,
+    TrackerPage,
+    TrackerFormPage,
     VideoFollowUpPage,
     WatchPage
   ],

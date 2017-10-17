@@ -5,6 +5,7 @@ import { FerronDialogs } from '../../native-plugins/ferron-dialogs.service';
 import { LearnPage } from '../../pages/learn/learn';
 import { PromptsPage } from '../../pages/prompts/prompts.page';
 import { RemindersPage } from '../../pages/reminders/reminders';
+import { TrackerPage } from '../../pages/tracker/tracker';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Constants } from '../../constants.service';
@@ -52,6 +53,12 @@ export class HomePage extends Tracking {
   public goReminders() {
     const buttonLabel = 'Set your reminders';
     this.nav.push(RemindersPage);
+    this.recordNavAndInitialization(this.pageName, buttonLabel);
+  }
+  
+  public goTracker() {
+    const buttonLabel = 'Track your cigarettes';
+    this.nav.push(TrackerPage);
     this.recordNavAndInitialization(this.pageName, buttonLabel);
   }
 

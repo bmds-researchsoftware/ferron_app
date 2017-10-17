@@ -130,3 +130,23 @@ button.item-md-secondary, button.text-ios-secondary {
   background-image: none !important;
   padding-right: 0 !important;
 }
+
+table.calendar {
+  width: 100%;
+
+  > thead th, .date {
+    text-align: right;
+  }
+
+  .date {
+    height: 50px;
+    border-bottom: 1px solid;
+  }
+}
+
+.cigarette-count {
+  width: 3em;
+  height: 2em;
+  vertical-align: text-top;
+  text-align: center;
+}

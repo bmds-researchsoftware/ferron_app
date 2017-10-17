@@ -127,6 +127,18 @@ const TABLES: Table[] = [
       ['client_created_at', 'INTEGER'],
       ['client_updated_at', 'INTEGER'],
       ['is_dirty', 'INTEGER'],
+      ['count', 'INTEGER'],
+      ['date', 'VARCHAR(64)']
+    ],
+    isSyncable: true,
+    name: 'tracked_cigarettes'
+  },
+  {
+    columns: [
+      ['uuid', 'VARCHAR(36) PRIMARY KEY'],
+      ['client_created_at', 'INTEGER'],
+      ['client_updated_at', 'INTEGER'],
+      ['is_dirty', 'INTEGER'],
       ['identifier', 'VARCHAR(64)'],
       ['title', 'VARCHAR(64)']
     ],
@@ -312,7 +324,7 @@ export class FerronSqlite {
                       });
 
     return this.db.executeSql(query, dataValues).then((_) => {
-      console.log('query ran successfully: ' + query);
+      console.log('query ran successfully: ' + query + ', (' + dataValues.join(', ') + ')');
     }).catch(error => {
       console.log(error);
     });

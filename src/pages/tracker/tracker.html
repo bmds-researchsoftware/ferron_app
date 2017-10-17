@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Tracker</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>
+    Track your cigarettes smoked each day.
+  </h2>
+
+  <button ion-button>
+    <ion-icon style="font-size: 3em;" name="arrow-dropleft" (click)="previousPeriod()"></ion-icon>
+  </button>
+  <button ion-button>
+    <ion-icon style="font-size: 3em;" name="arrow-dropright" (click)="nextPeriod()"></ion-icon>
+  </button>
+  <b style="font-size: 1.5em; vertical-align: text-top;">{{ MONTH_NAMES[monthStartDate().getMonth()] }} {{ monthStartDate().getFullYear() }}</b>
+
+  <table class="calendar">
+    <thead>
+      <tr>
+        <th>Su</th>
+        <th>M</th>
+        <th>Tu</th>
+        <th>W</th>
+        <th>Th</th>
+        <th>F</th>
+        <th>Sa</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let dates of weeks()">
+        <td class="date" *ngFor="let date of dates" (click)="showFormModal(date)">
+          {{ date.getDate() }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ion-content>
