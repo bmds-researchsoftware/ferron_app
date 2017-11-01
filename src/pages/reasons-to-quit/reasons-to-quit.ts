@@ -6,10 +6,7 @@ import { FerronSqlite } from '../../native-plugins/ferron-sqlite.service';
   templateUrl: 'reasons-to-quit.html',
 })
 export class ReasonsToQuitPage {
-  public additionalResponse = {
-    uuid: null,
-    text: null
-  };
+  public additionalResponseText: String;
   public reasons = [
     {
       text: 'I want more energy',
@@ -145,8 +142,7 @@ export class ReasonsToQuitPage {
         });
 
         if (reasonIndex === -1) {
-          this.additionalResponse.text = selection.reason_to_quit_title;
-          this.additionalResponse.uuid = selection.uuid;
+          this.additionalResponseText = selection.reason_to_quit_title;
         } else {
           this.reasons[reasonIndex].checked = true;
         }
@@ -170,8 +166,7 @@ export class ReasonsToQuitPage {
 
   public saveAdditionalResponse() {
     this.sqlite.persist(this.RESPONSES_TABLE, {
-      uuid: this.additionalResponse.uuid,
-      reason_to_quit_title: this.additionalResponse.text
+      reason_to_quit_title: this.additionalResponseText
     });
   }
 }

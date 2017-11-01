@@ -51,20 +51,18 @@ describe('ReasonsToQuitPage', () => {
 
       reasonsToQuitPage.refreshSelections();
       resolver.then(() => {
-        expect(reasonsToQuitPage.additionalResponse.text).toEqual('something else');
-        expect(reasonsToQuitPage.additionalResponse.uuid).toEqual('abc');
+        expect(reasonsToQuitPage.additionalResponseText).toEqual('something else');
       });
     });
   });
 
   describe('#saveAdditionalResponse', () => {
     it('persists the additional response text', () => {
-      reasonsToQuitPage.additionalResponse.text = 'foobar';
+      reasonsToQuitPage.additionalResponseText = 'foobar';
 
       reasonsToQuitPage.saveAdditionalResponse();
 
       expect(stubSqlite.persist).toHaveBeenCalledWith('reason_to_quit_responses', {
-        uuid: null,
         reason_to_quit_title: 'foobar'
       });
     });
