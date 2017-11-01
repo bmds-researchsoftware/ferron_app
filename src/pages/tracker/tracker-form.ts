@@ -16,7 +16,7 @@ import { NavParams, ViewController } from 'ionic-angular';
         <button ion-button (click)="incrementCount()">
           <ion-icon name="add"></ion-icon>
         </button>
-        <input type="number" class="cigarette-count" [(ngModel)]="count" />
+        <input type="number" class="cigarette-count" [ngClass]="count === 0 ? 'zero' : ''" [(ngModel)]="count" />
         <button ion-button (click)="decrementCount()">
           <ion-icon name="remove"></ion-icon>
         </button>
@@ -37,6 +37,7 @@ import { NavParams, ViewController } from 'ionic-angular';
 export class TrackerFormPage {
   public date: Date;
   public count: number;
+  public uuid: String;
   public MONTH_NAMES = [
     "January",
     "February",
@@ -57,6 +58,8 @@ export class TrackerFormPage {
     public navParams: NavParams
   ) {
     this.date = navParams.data.date;
+    this.count = navParams.data.count;
+    this.uuid = navParams.data.uuid;
   }
 
   incrementCount() {
@@ -82,7 +85,8 @@ export class TrackerFormPage {
   save() {
     this.viewController.dismiss({
       count: this.count,
-      date: this.date
+      date: this.date,
+      uuid: this.uuid
     });
   }
 }

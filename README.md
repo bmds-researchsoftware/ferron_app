@@ -35,3 +35,17 @@ gem install fastlane
 cd platforms/ios
 fastlane release
 ```
+
+## Development
+
+To run the end-to-end tests:
+
+```bash
+./node_modules/.bin/protractor
+```
+
+To run the unit tests:
+
+```bash
+npm test
+```

@@ -134,19 +134,29 @@ button.item-md-secondary, button.text-ios-secondary {
 table.calendar {
   width: 100%;
 
-  > thead th, .date {
+  > thead th {
     text-align: right;
   }
 
   .date {
     height: 50px;
-    border-bottom: 1px solid;
+    border: 1px solid;
+    text-align: left;
+    vertical-align: top;
+    padding: 1px;
   }
 }
 
 .cigarette-count {
   width: 3em;
   height: 2em;
-  vertical-align: text-top;
+  padding-top: 0.5em;
+  vertical-align: center;
   text-align: center;
+  color: red;
+  font-weight: bold;
+
+  &.zero {
+    color: green;
+  }
 }

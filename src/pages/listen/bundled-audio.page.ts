@@ -18,7 +18,7 @@ export class BundledAudioPage {
   private PAUSE_ICON = 'pause';
   private UPDATE_PERIOD_IN_MS = 250;
   private currentState = this.PAUSED;
-  private interval: number;
+  private interval: any;
 
   constructor(public params: NavParams,
               public viewController: ViewController,

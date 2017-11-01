@@ -4,7 +4,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content id="tracker-content" padding>
   <h2>
     Track your cigarettes smoked each day.
   </h2>
@@ -31,9 +31,10 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let dates of weeks()">
-        <td class="date" *ngFor="let date of dates" (click)="showFormModal(date)">
-          {{ date.getDate() }}
+      <tr *ngFor="let dates of weeks | async">
+        <td class="date" *ngFor="let day of dates" (click)="showFormModal(day)">
+          {{ day.date.getDate() }}
+          <div class="cigarette-count" [ngClass]="day.count === 0 ? 'zero' : ''">{{ day.count }}</div>
         </td>
       </tr>
     </tbody>

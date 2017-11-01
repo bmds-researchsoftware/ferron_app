@@ -33,7 +33,9 @@ export class TrackerPage extends Tracking {
     "November",
     "December"
   ];
+  public TRACKED_CIGARETTES_TABLE = "tracked_cigarettes";
 
+  private weeks: Promise<Array<any>>|null = null;
   private date = new Date();
   private pageName = 'Cigarette Tracker';
   
@@ -44,46 +46,57 @@ export class TrackerPage extends Tracking {
   ) {
     super(sqlite);
     this.sqlite.initialize().then(() => {
-      // noop
+      this.recalculate();
     }).catch(error => {
       console.log('error initializing: ' + error);
     });
   }
   
-  public weeks(): Array<any> {
-    let weeks = [];
-    
-    for (let w = this.calendarStartDate(); w < this.calendarEndDate(); w = addDays(w, 7)) {
-      let week = [];
+  private recalculate() {
+    this.weeks = this.sqlite.fetchAll(this.TRACKED_CIGARETTES_TABLE).then(counts => {
+      let weeks = [];
+      
+      for (let w = this.calendarStartDate(); w < this.calendarEndDate(); w = addDays(w, 7)) {
+        let week = [];
 
-      for (let d = w, a = 1; a <= 7; d = addDays(w, a++)) {
-        week.push(d);
+        for (let d = w, a = 1; a <= 7; d = addDays(w, a++)) {
+          let count = counts.find(count => {
+            return d.valueOf() === new Date(count.date).setHours(12);
+          });
+          week.push({ date: d, count: (count || {}).count, uuid: (count || {}).uuid });
+        }
+        weeks.push(week);
       }
-      weeks.push(week);
-    }
 
-    return weeks;
+      return weeks;
+    });
   }
 
   public previousPeriod() {
     const buttonLabel = 'Previous Month';
     this.date = addDays(this.monthStartDate(), -1);
     this.recordNav(this.pageName, buttonLabel);
+    this.recalculate();
   }
 
   public nextPeriod() {
     const buttonLabel = 'Next Month';
     this.date = addDays(this.monthEndDate(), 1);
     this.recordNav(this.pageName, buttonLabel);
+    this.recalculate();
   }
 
-  public showFormModal(date: Date) {
-    let modal = this.modal.create(TrackerFormPage, { date });
+  public showFormModal(day: { date: Date, count: number }) {
+    let modal = this.modal.create(TrackerFormPage, day);
     modal.onDidDismiss(trackedCigarettes => {
+      if (trackedCigarettes == null) {
+        return;
+      }
       this.sqlite.persist('tracked_cigarettes', trackedCigarettes);
+      this.recalculate();
     });
     modal.present();
-    this.recordNav(this.pageName, date.toISOString());
+    this.recordNav(this.pageName, day.date.toISOString());
   }
 
   private monthStartDate(): Date {
