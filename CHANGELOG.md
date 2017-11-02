@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.7.0 - 2017-10-01
+
+* FCQ-54 update reasons for quitting functionality
+* FCQ-53 revise cigarette tracking calendar
+
 ## 0.6.7 - 2017-04-07
 
 * FCQ-50 update whitelisted domains for Vimeo (#70)
