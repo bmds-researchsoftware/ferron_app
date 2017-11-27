@@ -13,11 +13,11 @@ import { NavParams, ViewController } from 'ionic-angular';
 
     <ion-content padding>
       <div style="text-align: center;">
-        <button ion-button (click)="incrementCount()">
+        <button ion-button (click)="incrementCount()" class="change-cigarette-count">
           <ion-icon name="add"></ion-icon>
         </button>
         <input type="number" class="cigarette-count" [ngClass]="count === 0 ? 'zero' : ''" [(ngModel)]="count" />
-        <button ion-button (click)="decrementCount()">
+        <button ion-button (click)="decrementCount()" class="change-cigarette-count">
           <ion-icon name="remove"></ion-icon>
         </button>
       </div>

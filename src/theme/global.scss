@@ -144,14 +144,19 @@ table.calendar {
     text-align: left;
     vertical-align: top;
     padding: 1px;
+    font-size: 0.8em;
   }
+}
+
+button.change-cigarette-count {
+  height: 2.6em;
+  font-size: 1.8em;
 }
 
 .cigarette-count {
   width: 3em;
-  height: 2em;
-  padding-top: 0.5em;
-  vertical-align: center;
+  height: 2.25em;
+  vertical-align: sub;
   text-align: center;
   color: red;
   font-weight: bold;
