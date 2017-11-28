@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.7.1 - 2017-11-28
+
+* FCQ-62 prevent navigating back to Configuration Page (#81)
+* FCQ-59 FCQ-61 UI updates for cigarette tracker (#80)
+
 ## 0.7.0 - 2017-10-01
 
 * FCQ-54 update reasons for quitting functionality
