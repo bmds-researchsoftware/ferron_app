@@ -54,7 +54,7 @@ export class ConfigurationPage {
   }
 
   public goHome() {
-    this.nav.push(HomePage);
+    this.nav.setRoot(HomePage);
   }
 
   public createAuthenticationToken() {
