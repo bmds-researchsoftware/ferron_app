@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.2 - 2017-11-28
+
+* no changes; creating a new version for the App Store
+
 ## 0.7.1 - 2017-11-28
 
 * FCQ-62 prevent navigating back to Configuration Page (#81)
